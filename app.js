@@ -75,6 +75,10 @@ app.use(function(req, res, next){
 app.use('/users', users);
 app.use('/pages', pages);
 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname + '/views/splashscreen.html'));
+});
+
 const port = process.env.PORT || 8000;
 server=app.listen(port, () =>{
   console.log(`Server started on port ${port}`);
