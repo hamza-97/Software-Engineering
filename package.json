@@ -2,7 +2,7 @@
   "name": "Scriptomania",
   "version": "1.0.0",
   "description": "Scriptomania is a web app designed for writers and producers to upload and download media scripts.",
-  "main": "node app.js",
+  "main": "app.js",
   "dependencies": {
     "express": "^4.16.4",
     "mongodb": "^3.2.3"
