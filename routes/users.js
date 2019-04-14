@@ -10,9 +10,9 @@ require('../models/User');
 const User = mongoose.model('users');
 
 // User main page
-router.get('/home', (req, res) => {
-  res.render('users/Home');
-});
+// router.get('/home', (req, res) => {
+//   res.render('users/Home');
+// });
 
 
 // User Login Route
