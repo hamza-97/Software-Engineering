@@ -1,27 +1,25 @@
 {
-  "name": "lecturelink",
+  "name": "Scriptomania",
   "version": "1.0.0",
-  "description": "LectureLink is a class co-operation software designed to make classes more interactive for students and instructors.",
+  "description": "Scriptomania is a web app designed for writers and producers to upload and download media scripts.",
   "main": "app.js",
-  "scripts": {
-    "start": "nodemon app.js"
-  },
-  "author": "Group10",
-  "license": "MIT",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.18.1",
-    "connect": "^3.6.6",
-    "connect-flash": "^0.1.1",
     "express": "^4.16.4",
-    "express-handlebars": "^3.0.0",
-    "express-session": "^1.15.5",
-    "method-override": "^2.3.9",
-    "mongoose": "^4.11.12",
-    "nodemon": "^1.17.3",
-    "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
-    "serve-favicon": "^2.5.0",
-    "socket.io": "^2.1.0"
-  }
+    "mongodb": "^3.2.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hamza-97/Software-Engineering.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hamza-97/Software-Engineering/issues"
+  },
+  "homepage": "https://github.com/hamza-97/Software-Engineering#readme"
 }

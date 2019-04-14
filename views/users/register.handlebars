@@ -1,7 +1,7 @@
 <section class="Signup-form">
   <div>
   <img class="sign_image" src="/img/scripto.png" alt="Logo image" height="80" width="80">  
-  <h1 style="color: white">Sign Up to Scriptomania</h1>
+  <h1 >Sign Up to Scriptomania</h1>
   </div>
 <div class="signup_form">
   <form action="POST">
@@ -20,17 +20,23 @@
     <label>Password</label>
     <input type="Password" name="Password" required placeholder="Password"><br><br>
     <label>Confirm password</label>
-    <input type="Password" name="ConfirmPassword" required placeholder="Password"><br><br>
-    <input type="radio" name="Writer">
-    <label>Writer</label>
-    <input type="radio" name="Producer">
-    <label>Producer</label><br><br>
-    <input type="checkbox" name="Agree">
-    <label>I agree to the terms of use and privacy policy</label><br>
+    <input type="Password" name="ConfirmPassword" required placeholder="Password"><br>
+    
+    <div>
+    <label class="labell"><input class="inputt" type="radio" name="Writer"></input>Writer</label>
+    </div>
+    
+    <div>
+    <label class="labell"><input class="inputt" type="radio" name="Producer"></input>Producer</label>
+    </div>
+
+    <div>
+    <label ><input class="input1" type="checkbox" name="Agree"></input>I agree to the terms of use and privacy policy</label>
+    </div>
+    
     <input type="Submit" value="signup">
 
   </form>
   </div>
-  <br><br><br>
   <h4 style ="color: black"><a href = "login">Already have an account? Click here to login!</a></h4>
 </section>

@@ -2,21 +2,13 @@
   box-sizing: border-box;
 }
 
-html {
-  background: #696969;
+body {
+  font: 300 16px/22px "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  text-align: center;
 }
 
-body {
-  background: #696969;
-  margin: 0;
-  padding: 0;
-  font-family: 'Lato', sans-serif;
-}
-img{
-  /*margin-top: 30px*/
-}
 .shower{
-  color: white
+  color: #888
   /*padding botto*/
 }
 .showpass{
@@ -26,7 +18,7 @@ img{
   /*padding-top:10px*/
 }
 .login-form-wrap {
-  background: radial-gradient(ellipse at center, #5170ad 0%, #00008B 100%);
+  background: white;
   border: 1px solid #2d416d;
   box-shadow: 0 1px #5670A4 inset, 0 0 10px 5px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -39,25 +31,20 @@ img{
 .login-form-wrap h1 {
   margin: 0 0 50px 0;
   padding: 0;
-  font-size: 26px;
-  color: #fff;
+  font-size: 2vw;
+  color: #888;
 }
 .login-form-wrap h5 {
   margin-top: 40px;
 }
-.login-form-wrap h5 > a {
-  font-size: 14px;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 400;
-}
+
 
 .login-form input[type="email"], .login-form input[type="password"] {
   width: 100%;
   border: 1px solid #314d89;
   outline: none;
   padding: 12px 20px;
-  color: #afafaf;
+  color: #888;
   font-weight: 400;
   font-family: 'Lato', sans-serif;
   cursor: pointer;
@@ -97,28 +84,76 @@ img{
   padding-bottom: 7px;
   background: #C9C9C9;
 }
-.sign_image{
+/*.sign_image{
   float: right;
-}
+}*/
 .signup_form{
   text-align: left;
-  color: white;
+  /*color: #888;*/
+  font-weight: 500;
   clear: both;
 
 }
 .signup_form input{
 width: 100%;
-/*vertical-align:right;*/
+vertical-align:right;
 clear: both;
 }
 .Signup-form{
-  background: radial-gradient(ellipse at center, #5170ad 0%, #00008B 100%);
+  background: white;
   border: 1px solid #2d416d;
   box-shadow: 0 1px #5670A4 inset, 0 0 10px 5px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   width: 600px;
-  height: 800px;
+  height: 850px;
   margin: 60px auto;
-  padding: 50px 30px 0 30px;
+  padding: 10px 30px 10px 30px;
   text-align: center;
+  /*color:#888;*/
+}
+.Signup-form h1 {
+  margin: 0 0 50px 0;
+  padding: 0;
+  font-size: 2vw;
+  color: #888;
+}
+
+a {
+color: #888;
+}
+a:link {
+color: #888;
+}
+a:visited {
+color: #999999;
+}
+a:hover {
+color: black;
+}
+.labell {
+  display: block;
+  padding-left: 15px;
+  text-indent: 0px;
+  padding: 5px 280px 0px 0px;
+}
+.inputt {
+  width: 13px;
+  height: 13px;
+  /*padding: 100;*/
+  /*margin:0;*/
+  vertical-align: bottom;
+  position: relative;
+  top: 16px;
+  *overflow: hidden;
+}
+.input1 {
+  width: 13px;
+  height: 13px;
+  /*padding: 100;*/
+  /*margin:0;*/
+  vertical-align: bottom;
+  position: relative;
+  top: 20px;
+  left: 190px;
+  *overflow: hidden;
 }
