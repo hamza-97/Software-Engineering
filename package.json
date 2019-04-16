@@ -4,12 +4,20 @@
   "description": "Scriptomania is a web app designed for writers and producers to upload and download media scripts.",
   "main": "app.js",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
+    "express-session": "^1.16.1",
     "http": "0.0.0",
     "method-override": "^3.0.0",
-    "mongodb": "^3.2.3"
+    "mongodb": "^3.2.3",
+    "mongoose": "^5.5.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "serve-favicon": "^2.5.0",
+    "socket.io": "^2.2.0"
   },
   "devDependencies": {},
   "scripts": {
