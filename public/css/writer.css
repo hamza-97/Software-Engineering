@@ -1,0 +1,162 @@
+body {
+  background: #293f50;
+  color: #888;
+  font: 300 16px/22px "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  /*text-align: center;*/
+}
+
+.primary-header a,
+.primary-footer a {
+  color: #fff;
+}
+.primary-header a:hover,
+.primary-footer a:hover {
+  color: #648880;
+}
+
+
+
+.hero {
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  color: #fff;
+  line-height: 44px;
+  padding: 0px 50px 15px;
+  text-align: center;
+  font-size: 1vw;
+}
+
+.welcome {
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  /*color: #fff;*/
+  	 font-style: normal; 
+	 font-variant: normal; 
+	 font-weight: 450; 
+	 line-height: 30px; 
+  line-height: 44px;
+  padding: 0px 0px 0px 0px;
+  font-size: 3vw;
+  text-align: center;
+}
+.grid{
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.grid-item1 {
+  padding: 0px 0px 0px 50px;
+  text-align: center;
+  /*width:80%;*/
+  font-size: 1vw;
+}
+.grid-item2 {
+  padding: 0px 0px 0px 80px;
+  text-align: center;
+  width:80%;
+  font-size: 1vw;
+}
+.grid-item3 {
+  padding: 0px 0px 0px 50px;
+  text-align: center;
+  width:80%;
+  font-size: 1vw;
+}
+.paragraph{
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	font-weight: 400; 
+	 font-size: 1vw;
+}
+.newhero{
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	 /*font-size: 30px; */
+	 font-style: normal; 
+	 font-variant: normal; 
+	 font-weight: 400; 
+	 /*line-height: 30px; */
+  color: #fff;
+  /*line-height: px;*/
+  padding: 0px 80px 45px 80px;
+  text-align: center;
+  font-size: 1.5vw;
+  text-transform: uppercase;
+
+}
+.hero1 {
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	 /*font-size: 30px; */
+	 font-style: normal; 
+	 font-variant: normal; 
+	 font-weight: 400; 
+	 line-height: 30px; 
+  color: #fff;
+  line-height: 44px;
+  padding: 20px 80px 0px 80px;
+  text-align: center;
+  font-size: 4vw;
+  text-transform: uppercase;
+
+}
+.insidebutton{
+	color: #888;
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	font-size: 1.25vw;
+	font-weight: 520; 
+}
+.info{
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	font-size: 1.5vw;
+	font-weight: 600; 
+}
+.wel{
+	padding: 0px 0px 0px 20px
+	
+}
+.btn {
+	background: #293f50;
+	border-radius: 5px;
+/*	color: #fff;*/
+	cursor: pointer;
+	display: inline-block;
+	font-weight: 400;
+	letter-spacing: .5px;
+	text-transform: uppercase;
+	border: 1px solid #fff;
+	padding: 10px 71px 10px;
+	align-self: center;
+}
+.btn1 {
+	background: #293f50;
+	border-radius: 5px;
+/*	color: #fff;*/
+	cursor: pointer;
+	display: inline-block;
+	font-weight: 400;
+	letter-spacing: .5px;
+	text-transform: uppercase;
+	border: 1px solid #fff;
+	padding: 10px 30px 10px;
+	align-self: center;
+}
+.mydiv{
+	padding: 0px 0px 10px 10px;
+	text-align: center;
+}
+
+.btn:hover {
+  background: #fff;
+  color: #648880;
+}
+.btn1:hover {
+  background: #fff;
+  color: #648880;
+}
+.row {
+  background: #fff;
+  min-width: 960px;
+  padding: 66px 0 44px 0;
+}
+
+footer{
+	/*color:white;*/
+	text-align: center;
+	margin-top: 20px;
+}
+
