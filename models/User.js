@@ -11,17 +11,36 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  password:{
+  contact:{
+   type: String,
+   required: true 
+  },
+  CNIC:{
     type: String,
     required: true
   },
-  type:{
+  date:{
+    type: Date,
+    required: true
+  },
+  username:{
     type: String,
     required: true
-  }, 
-  courses:{
-    type: [[String]]
+  },
+  password:{
+    type: String,
+    required: true
   }
+//   confirmpassword:{
+//   type: String,
+//   required: true
+// },
+  
+// radio:{
+//   type: String, possibleValues: ['writer','producer'],
+//     required: true
+//   }, 
+
 });
 
 mongoose.model('users', UserSchema);

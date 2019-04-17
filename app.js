@@ -28,6 +28,7 @@ const db = require('./config/database');
 mongoose.Promise = global.Promise;
 // Connect to mongoose
 mongoose.connect(db.mongoURI, {
+  uri_decode_auth: true ,
   useMongoClient: true
 })
   .then(() => console.log('Connected to MongoDB Server'))
@@ -79,7 +80,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname + '/views/splashscreen.html'));
 });
 
-const port = process.env.PORT || 8011;
+const port = process.env.PORT || 1234;
 server=app.listen(port, () =>{
   console.log(`Server started on port ${port}`);
 });

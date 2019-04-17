@@ -8,15 +8,12 @@ require('../models/User');
 const User = mongoose.model('users');
 
 // Get Dashboard
-// router.get('/', ensureAuthenticated, (req, res) => {
-//   User.find({email: req.user.email})
-//     .then(record => {
-//       res.render('pages/dashboard', {
-//         courses:req.user.courses,
-//         allData:record
-//     })
-//   });
-// });
+router.get('/', ensureAuthenticated, (req, res) => {
+  User.find({username: req.user.username})
+    .then(record => {
+      res.render('pages/writer')
+  });
+});
 
 // User Register Route
 // router.get('/In', (req, res) => {
