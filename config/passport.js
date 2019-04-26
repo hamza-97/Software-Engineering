@@ -15,11 +15,14 @@ module.exports = function(passport){
         return done(null, false, {message: 'No User Found'});
       } 
 
+
       // Match password
       bcrypt.compare(password, user.password, (err, isMatch) => {
         if(err) throw err;
         if(isMatch){
+          // console.log(user.user)
           return done(null, user);
+
         } else {
           return done(null, false, {message: 'Password Incorrect'});
         }

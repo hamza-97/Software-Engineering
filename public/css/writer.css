@@ -2,7 +2,7 @@ body {
   background: #293f50;
   color: #888;
   font: 300 16px/22px "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-  /*text-align: center;*/
+  text-align: center;
 }
 
 .primary-header a,
@@ -15,16 +15,26 @@ body {
 }
 
 
+.logoutLblPos{
 
-.hero {
-	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-  color: #fff;
-  line-height: 44px;
-  padding: 0px 50px 15px;
-  text-align: center;
-  font-size: 1vw;
+   position:fixed;
+   right:10px;
+   top:5px;
 }
 
+.outer{
+	background:#fff;
+}
+.heroo {
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  color: black;
+  background: #fff;
+
+  line-height: 44px;
+  padding: 0px 50px 0px;
+  text-align: center;
+  font-size: 1.5vw;
+}
 .welcome {
 	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
   /*color: #fff;*/
@@ -37,48 +47,8 @@ body {
   font-size: 3vw;
   text-align: center;
 }
-.grid{
-  display: grid;
-  grid-template-columns: auto auto auto;
-}
-.grid-item1 {
-  padding: 0px 0px 0px 50px;
-  text-align: center;
-  /*width:80%;*/
-  font-size: 1vw;
-}
-.grid-item2 {
-  padding: 0px 0px 0px 80px;
-  text-align: center;
-  width:80%;
-  font-size: 1vw;
-}
-.grid-item3 {
-  padding: 0px 0px 0px 50px;
-  text-align: center;
-  width:80%;
-  font-size: 1vw;
-}
-.paragraph{
-	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-	font-weight: 400; 
-	 font-size: 1vw;
-}
-.newhero{
-	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-	 /*font-size: 30px; */
-	 font-style: normal; 
-	 font-variant: normal; 
-	 font-weight: 400; 
-	 /*line-height: 30px; */
-  color: #fff;
-  /*line-height: px;*/
-  padding: 0px 80px 45px 80px;
-  text-align: center;
-  font-size: 1.5vw;
-  text-transform: uppercase;
 
-}
+
 .hero1 {
 	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 	 /*font-size: 30px; */
@@ -88,16 +58,22 @@ body {
 	 line-height: 30px; 
   color: #fff;
   line-height: 44px;
-  padding: 20px 80px 0px 80px;
+ padding: 20px 80px 10px 80px;
   text-align: center;
   font-size: 4vw;
   text-transform: uppercase;
 
 }
 .insidebutton{
-	color: #888;
+	color: white;
 	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 	font-size: 1.25vw;
+	font-weight: 520; 
+}
+.insidebutton1{
+	color: white;
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	font-size: 1vw;
 	font-weight: 520; 
 }
 .info{
@@ -105,58 +81,116 @@ body {
 	font-size: 1.5vw;
 	font-weight: 600; 
 }
-.wel{
-	padding: 0px 0px 0px 20px
-	
-}
+
 .btn {
 	background: #293f50;
 	border-radius: 5px;
-/*	color: #fff;*/
+	color: #fff;
 	cursor: pointer;
+	width:60%;
+	min-width: 100px;
+	height: 30%;
+	min-height: 70px;
 	display: inline-block;
 	font-weight: 400;
 	letter-spacing: .5px;
 	text-transform: uppercase;
-	border: 1px solid #fff;
-	padding: 10px 71px 10px;
+	border: 3px solid black;
+	padding: 10px 0px 10px;
 	align-self: center;
 }
 .btn1 {
 	background: #293f50;
 	border-radius: 5px;
-/*	color: #fff;*/
+	color: #fff;
+	width:60%;
+	min-width: 100px;
 	cursor: pointer;
+	min-height: 70px;
 	display: inline-block;
 	font-weight: 400;
 	letter-spacing: .5px;
 	text-transform: uppercase;
-	border: 1px solid #fff;
-	padding: 10px 30px 10px;
+	border: 3px solid black;
+	padding: 10px 0px 10px;
 	align-self: center;
 }
 .mydiv{
-	padding: 0px 0px 10px 10px;
-	text-align: center;
+	padding: 0px 0px 10px 0px;
 }
 
 .btn:hover {
-  background: #fff;
-  color: #648880;
+  background: #888;
+  color: black;
+
 }
 .btn1:hover {
-  background: #fff;
-  color: #648880;
+  background: #888;
+  color: black;
 }
 .row {
   background: #fff;
-  min-width: 960px;
-  padding: 66px 0 44px 0;
+  width:100%;
+  min-width: 100px;
+  padding: 10px 0 44px 0;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
 }
 
 footer{
 	/*color:white;*/
-	text-align: center;
-	margin-top: 20px;
+	font-size: 1vw;
+	margin-top: 11%;
+	margin-bottom: 5px;
+}
+/*
+ nav ul {
+     list-style: none;
+     width: 100%;
+     border: 1px solid red;
+     text-align: right;
+  }*/
+ .lul {
+ 	color: black;
+ /*background-color: white;*/
+ float: right;
+/*padding-right:20px;*/
+margin-right:5px;
+margin-top: 5px;
+text-align:right;
+ display: grid inline-block;
+  grid-template-columns: 50%, 50%;
 }
 
+.at{
+	color:black;
+	padding:0px 0px 0px 20px;
+}
+.topbtn{
+	text-align:center;
+	background: #293f50;
+	border-radius: 3px;
+	color: #fff;
+	cursor: pointer;
+	width:40%;
+	/*min-width: 100px;
+	height: 40%;
+	min-height: 70px;*/
+	/*display: inline-block;*/
+	font-weight: 300;
+	letter-spacing: .4px;
+	text-transform: uppercase;
+	border: 0.5px solid white;
+	/*padding: 10px 0px 10px;*/
+	align-self: center;
+
+}
+.topbtn:hover{
+	  background: #888;
+  color: black;
+
+
+}
+.insidebutton1:hover{
+	color: black;
+}

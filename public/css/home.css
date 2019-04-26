@@ -22,7 +22,7 @@ body {
   line-height: 44px;
   padding: 0px 50px 15px;
   text-align: center;
-  font-size: 1vw;
+  font-size: 1.25vw;
 }
 
 .welcome {
@@ -37,14 +37,14 @@ body {
   font-size: 3vw;
   text-align: center;
 }
-.grid{
+/*.grid{
   display: grid;
   grid-template-columns: auto auto auto;
-}
-.grid-item1 {
+}*/
+/*.grid-item1 {
   padding: 0px 0px 0px 50px;
   text-align: center;
-  /*width:80%;*/
+  width:80%;
   font-size: 1vw;
 }
 .grid-item2 {
@@ -58,26 +58,11 @@ body {
   text-align: center;
   width:80%;
   font-size: 1vw;
-}
+}*/
 .paragraph{
 	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 	font-weight: 400; 
 	 font-size: 1vw;
-}
-.newhero{
-	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-	 /*font-size: 30px; */
-	 font-style: normal; 
-	 font-variant: normal; 
-	 font-weight: 400; 
-	 /*line-height: 30px; */
-  color: #fff;
-  /*line-height: px;*/
-  padding: 0px 80px 45px 80px;
-  text-align: center;
-  font-size: 1.5vw;
-  text-transform: uppercase;
-
 }
 .hero1 {
 	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
@@ -88,7 +73,7 @@ body {
 	 line-height: 30px; 
   color: #fff;
   line-height: 44px;
-  padding: 20px 80px 0px 80px;
+  padding: 20px 80px 45px 80px;
   text-align: center;
   font-size: 4vw;
   text-transform: uppercase;
@@ -111,29 +96,33 @@ body {
 	border-radius: 5px;
 /*	color: #fff;*/
 	cursor: pointer;
+	width:14%;
+	min-width: 100px;
 	display: inline-block;
 	font-weight: 400;
 	letter-spacing: .5px;
 	text-transform: uppercase;
 	border: 1px solid #fff;
-	padding: 10px 71px 10px;
+	padding: 10px 0px 10px;
 	align-self: center;
 }
 .btn1 {
 	background: #293f50;
 	border-radius: 5px;
 /*	color: #fff;*/
+	width:14%;
+	min-width: 100px;
 	cursor: pointer;
 	display: inline-block;
 	font-weight: 400;
 	letter-spacing: .5px;
 	text-transform: uppercase;
 	border: 1px solid #fff;
-	padding: 10px 30px 10px;
+	padding: 10px 0px 10px;
 	align-self: center;
 }
 .mydiv{
-	padding: 0px 0px 10px 10px;
+	padding: 0px 0px 10px 0px;
 }
 
 .btn:hover {
@@ -146,13 +135,17 @@ body {
 }
 .row {
   background: #fff;
-  min-width: 960px;
+  width:100%;
+  min-width: 100px;
   padding: 66px 0 44px 0;
+  display: grid;
+  grid-template-columns: 33.33% 33.33% 33.33%;
 }
 
 footer{
 	/*color:white;*/
-	
+	font-size: 1vw;
 	margin-top: 20px;
+	margin-bottom: 5px;
 }
 

@@ -80,7 +80,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname + '/views/splashscreen.html'));
 });
 
-const port = process.env.PORT || 1234;
+const port = process.env.PORT || 1112;
 server=app.listen(port, () =>{
   console.log(`Server started on port ${port}`);
 });

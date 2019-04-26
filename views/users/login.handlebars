@@ -1,4 +1,19 @@
+<script type="text/javascript">
 
+
+  function showpass(){
+  console.log("Oks")
+  var x = document.getElementById("password");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+
+  }
+
+
+</script>
 <body>
 
   <section class="login-form-wrap">
@@ -14,12 +29,11 @@
       <input type="text" name="username" required placeholder="Username">
     </label>
     <label>
-      <input type="password" name="password" required placeholder="Password">
+      <input id ="password" type="password" name="password" required placeholder="Password">
     </label>
     <div class="showpass">
-    <input type="checkbox" name="show_pass">
-
-    <label class="shower">Show Password</label>
+    <input type="checkbox" name="show_pass" onclick="showpass();">
+    <label class="showpass">Show Password</label>
     </div>
     <br>
     <input type="submit" value="Login">

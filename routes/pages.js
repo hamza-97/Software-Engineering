@@ -11,8 +11,16 @@ const User = mongoose.model('users');
 router.get('/', ensureAuthenticated, (req, res) => {
   User.find({username: req.user.username})
     .then(record => {
-      res.render('pages/writer')
+      res.render('pages')
   });
+});
+
+router.get('/writer', (req, res) => {
+  res.render('pages/writer');
+});
+
+router.get('/editprof', (req, res) => {
+  res.render('pages/editprof');
 });
 
 // User Register Route

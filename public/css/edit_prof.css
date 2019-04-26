@@ -1,0 +1,170 @@
+
+
+body {
+  background: #293f50;
+  color: #888;
+  font: 300 16px/22px "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  text-align: center;
+}
+
+.shower{
+  color: #888
+  /*padding botto*/
+}
+.showpass{
+  float: left;
+  /*font-style: italic;*/
+  padding-bottom: 20px
+  /*padding-top:10px*/
+}
+
+.signup_form{
+  text-align: left;
+  /*color: #888;*/
+  font-weight: 500;
+  clear: both;
+
+}
+.signup_form input{
+width: 100%;
+vertical-align:right;
+clear: both;
+}
+.Signup-form{
+  background: white;
+  border: 1px solid #2d416d;
+  box-shadow: 0 1px #5670A4 inset, 0 0 10px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  width: 40%;
+  min-width: 40px;
+  height:45%;
+  margin: 60px auto;
+  padding: 10px 30px 10px 30px;
+  text-align: center;
+  /*color:#888;*/
+}
+.Signup-form h1 {
+  margin: 0 0 50px 0;
+  padding: 0;
+  font-size: 2vw;
+  color: #888;
+}
+
+
+body {
+  background: #293f50;
+  color: #888;
+  font: 300 16px/22px "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  text-align: center;
+}
+
+.primary-header a,
+.primary-footer a {
+  color: #fff;
+}
+.primary-header a:hover,
+.primary-footer a:hover {
+  color: #648880;
+}
+
+
+.logoutLblPos{
+
+   position:fixed;
+   right:10px;
+   top:5px;
+}
+
+
+
+
+
+.hero1 {
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+   /*font-size: 30px; */
+   font-style: normal; 
+   font-variant: normal; 
+   font-weight: 400; 
+   line-height: 30px; 
+  color: #fff;
+  line-height: 44px;
+ padding: 20px 80px 10px 80px;
+  text-align: center;
+  font-size: 4vw;
+  text-transform: uppercase;
+
+}
+.insidebutton{
+  color: white;
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  font-size: 1.25vw;
+  font-weight: 520; 
+}
+.insidebutton1{
+  color: white;
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  font-size: 1vw;
+  font-weight: 520; 
+}
+.info{
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  font-size: 1.5vw;
+  font-weight: 600; 
+}
+
+
+
+
+footer{
+  /*color:white;*/
+  font-size: 1vw;
+  margin-top: 11%;
+  margin-bottom: 5px;
+}
+
+ .lul {
+  position:fixed;
+  top:5px;
+  right: 5px;
+  color: black;
+ /*background-color: white;*/
+ float: right;
+/*padding-right:20px;*/
+
+
+text-align:right;
+ display: grid inline-block;
+  grid-template-columns: 33.33%, 33.33% 33.33%;
+}
+
+
+.topbtn{
+
+  text-align:center;
+  background: #293f50;
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+  width:33%;
+  /*min-width: 100px;
+  height: 40%;
+  min-height: 70px;*/
+  /*display: inline-block;*/
+  font-weight: 300;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  border: 0.5px solid white;
+  padding: 1px 10px 1px;
+  align-self: center;
+
+}
+.topbtn:hover{
+    background: #888;
+  color: black;
+
+
+}
+.insidebutton1:hover{
+  color: black;
+
+}

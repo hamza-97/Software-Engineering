@@ -10,7 +10,7 @@
     <label>Email</label>
     <input type="email" name="email" required placeholder="Email"><br><br>
     <label>Contact Number</label>
-    <input type="integer" name="Contact" required placeholder="+92xxx-xxxxxxx"><br><br>
+    <input type="integer" name="Contact" required pattern="[0-9]{11}" placeholder="+92xxx-xxxxxxx"><br><br>
     <label>CNIC</label>
     <input type="text" name="CNIC" required placeholder="xxxxx-xxxxxxx-x"><br><br>
     <label>Date of Birth</label>
@@ -20,12 +20,15 @@
     <label>Password</label>
     <input type="Password" name="Password" required placeholder="Password"><br><br>
     <label>Confirm password</label>
-    <input type="Password" name="ConfirmPassword" required placeholder="Password"><br>
+    <input type="Password" name="Password2" required placeholder="Password"><br>
+    <input type="radio" name="user" value="Writer">
+    <label>Writer</label>
+    <input type="radio" name="user" value="Producer">
+    <label>Producer</label><br><br>
+    <input type="checkbox" name="Agree">
+    <label>I agree to the terms and conditions</labedl>
     
-    
-    <div>
-    <label ><input class="input1" type="checkbox" name="Agree"></input>I agree to the terms of use and privacy policy</label>
-    </div>
+
     
     <input type="Submit" value="signup">
 

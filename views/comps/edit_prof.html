@@ -3,12 +3,11 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Scriptomania|signup</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
+  <title>Scriptomania| edit profile</title>
+    <!--  -->
   
-      <link rel="stylesheet" href="./style.css">
+      <!-- <link rel="stylesheet" href="./style.css"> -->
+      <link rel="stylesheet" href="style.css">
 
   
 </head>
@@ -17,44 +16,19 @@
 <section class="Signup-form">
   <div>
   <img class="sign_image" src="/img/scripto.png" alt="Logo image" height="80" width="80">  
-  <h1 >Edit profile </h1>
+  <h1 >Edit profile</h1>
   </div>
 <div class="signup_form">
   <form action="/users/submit_signup_form" method="POST">
-    <label>Name</label>
-    <input type="text" name="Name" required placeholder="Name"><br><br>
-    <label>Email</label>
-    <input type="email" name="email" required placeholder="Email"><br><br>
     <label>Contact Number</label>
     <input type="integer" name="Contact" required placeholder="+92xxx-xxxxxxx"><br><br>
-    <label>CNIC</label>
-    <input type="text" name="CNIC" required placeholder="xxxxx-xxxxxxx-x"><br><br>
-    <label>Date of Birth</label>
-    <input type="Date" name="date" required><br><br>
-    <label>Username</label>
-    <input type="text" name="Usename" required placeholder="Username"><br><br>
     <label>Password</label>
     <input type="Password" name="Password" required placeholder="Password"><br><br>
     <label>Confirm password</label>
     <input type="Password" name="ConfirmPassword" required placeholder="Password"><br>
-    
-    <div>
-    <label class="labell"><input class="inputt" type="radio" name="Writer"></input>Writer</label>
-    </div>
-    
-    <div>
-    <label class="labell"><input class="inputt" type="radio" name="Producer"></input>Producer</label>
-    </div>
-
-    <div>
-    <label ><input class="input1" type="checkbox" name="Agree"></input>I agree to the terms of use and privacy policy</label>
-    </div>
-    
     <input type="Submit" value="signup">
-
   </form>
   </div>
-  <h4 style ="color: black"><a href = "login">Already have an account? Click here to login!</a></h4>
 </section>
 
 </body>
