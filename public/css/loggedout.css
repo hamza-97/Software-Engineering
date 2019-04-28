@@ -5,23 +5,6 @@ body {
   text-align: center;
 }
 
-.primary-header a,
-.primary-footer a {
-  color: #fff;
-}
-.primary-header a:hover,
-.primary-footer a:hover {
-  color: #648880;
-}
-
-
-.logoutLblPos{
-
-   position:fixed;
-   right:10px;
-   top:5px;
-}
-
 .aaa{
 	margin-top: 5px;
 }
@@ -31,17 +14,9 @@ body {
 }
 .outer{
 	background:#fff;
+	padding:35px 0px 0px 0px;
 }
-.heroo {
-	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-  color: black;
-  background: #fff;
 
-  line-height: 44px;
-  padding: 0px 50px 0px;
-  text-align: center;
-  font-size: 1.5vw;
-}
 .welcome {
 	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
   /*color: #fff;*/
@@ -54,7 +29,6 @@ body {
   font-size: 3vw;
   text-align: center;
 }
-
 
 .hero1 {
 	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
@@ -75,22 +49,12 @@ body {
 .insidebutton{
 	color: white;
 	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-	font-size: 1.25vw;
-	font-weight: 520; 
-}
-.insidebutton1{
-	color: white;
-	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-	font-size: 1vw;
-	font-weight: 520; 
-}
-.info{
-	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 	font-size: 1.5vw;
-	font-weight: 600; 
+	font-weight: 520; 
 }
 
 .btn {
+	font-size: 1.25vw;
 	background: #293f50;
 	border-radius: 5px;
 	color: #fff;
@@ -107,58 +71,28 @@ body {
 	padding: 10px 0px 10px;
 	align-self: center;
 }
-.btn1 {
-	background: #293f50;
-	border-radius: 5px;
-	color: #fff;
-	width:60%;
-	min-width: 100px;
-	cursor: pointer;
-	min-height: 70px;
-	display: inline-block;
-	font-weight: 400;
-	letter-spacing: .5px;
-	text-transform: uppercase;
-	border: 3px solid black;
-	padding: 10px 0px 10px;
-	align-self: center;
-}
-.mydiv{
-	padding: 0px 0px 10px 0px;
-}
 
 .btn:hover {
   background: #888;
   color: black;
 
 }
-.btn1:hover {
-  background: #888;
-  color: black;
-}
+
 .row {
   background: #fff;
   width:100%;
   min-width: 100px;
   padding: 10px 0 44px 0;
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: 50% 50%;
 }
 
 .footer{
-  /*color:white;*/
   font-size: 1vw;
   position:fixed;
   bottom: 0;
   width: 100%;}
   
-/*
- nav ul {
-     list-style: none;
-     width: 100%;
-     border: 1px solid red;
-     text-align: right;
-  }*/
  .lul {
  	color: black;
  /*background-color: white;*/
@@ -169,37 +103,4 @@ margin-top: 5px;
 text-align:right;
  display: grid inline-block;
   grid-template-columns: 50%, 50%;
-}
-
-.at{
-	color:black;
-	padding:0px 0px 0px 20px;
-}
-.topbtn{
-	text-align:center;
-	background: #293f50;
-	border-radius: 3px;
-	color: #fff;
-	cursor: pointer;
-	width:40%;
-	/*min-width: 100px;
-	height: 40%;
-	min-height: 70px;*/
-	/*display: inline-block;*/
-	font-weight: 300;
-	letter-spacing: .4px;
-	text-transform: uppercase;
-	border: 0.5px solid white;
-	/*padding: 10px 0px 10px;*/
-	align-self: center;
-
-}
-.topbtn:hover{
-	  background: #888;
-  color: black;
-
-
-}
-.insidebutton1:hover{
-	color: black;
 }

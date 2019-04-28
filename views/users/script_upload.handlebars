@@ -1,52 +1,85 @@
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-    crossorigin="anonymous">
-
-  <style>
-    img {
-      /*width: 100%;*/
-    }
-  </style>
-  <title>File Uploads</title>
-</head>
-
-<body style="background-color: #293f50;color: #888;>
-
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>File Uploads</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/upload.css">
+  </head>
+  <STYLE>A {text-decoration: none;} </STYLE>
+<body>
+    <div class = "lul">
+      <table  >
+        <tr >
+          <td class="topbtn"><a  class ="insidebutton1 " href="/users/writer">Home</a></div></td>
+          <td class="topbtn"><a  class ="insidebutton1 " href="/users/view">My Profile</a></div></td>
+          <td class="topbtn"><a  class ="insidebutton1 " href="/pages/loggedout">Logout</a></div></td>
+        </tr>
+      </table>
+      </div>
+    <br>
   <div class="container">
 <div style="font-family: Courier New, Courier,Lucida Sans Typewriter, Lucida Typewriter, monospace; font-style: normal;font-variant:normal; font-weight: 400; line-height: 30px; color: #fff;line-height: 44px;padding: 20px 80px 10px 80px; text-align:center;font-size: 4vw;
     text-transform: uppercase;">
-<p>Scriptomania <img src="./scripto.png" alt="Logo" width="80" height="80"></img>
-<p>
 </div>
+ <div class="aaa">
+        <h2 class = "hero1"><img class="sss" src="/img/scripto.png" alt="Logo" width="80" height="100"></img><br><br>Scriptomania </h2><br>
+      </div>
     <div class="row">
       <div class="col-md-6 m-auto">
         <h1 class="text-center display-4 my-4">Upload your Script</h1>
         <form action="/users/upload" method="POST" enctype="multipart/form-data">
           <div class="custom-file mb-3">
-            <input type="file" name="file" id="file" class="custom-file-input">
+            <input type="file" name="file" id="file" class="custom-file-label">
             <label for="file" class="custom-file-label">Choose File</label>
           </div>
-          <label>Genre</label>
-          <!-- <input type="select"> -->
-          <select>
-            <option type="option" name="genre" value="thriller">Thriller>
-            <option type="option" name="genre" value="comedy">Comedy>
-            <option type="option" name="genre" value="romance">Romance>
-            <option type="option" name="genre" value="psifi">Psifi>
-            <option type="option" name="genre" value="action">Action>
-</select>
-            <!-- </select> -->
+            
+          
+          <p>Select the Genre</p>
+          <input type="radio" name="genre" value="Thriller">
+          <label>Thriller</label>
+          <input type="radio" name="genre" value="Horror">
+          <label>Horror</label>
+          <input type="radio" name="genre" value="Romance">
+          <label>Romance</label>
+          <input type="radio" name="genre" value="Action">
+          <label>Action</label>
+          <input type="radio" name="genre" value="Fantasy">
+          <label>Fantasy</label>
+          <input type="radio" name="genre" value="Mystery">
+          <label>Mystery</label>
+          <input type="radio" name="genre" value="Science Fiction">
+          <label>Science Fiction</label>
+          <input type="radio" name="genre" value="Psifi">
+          <label>Psifi</label>
+          <p>Enter the price of the Script</p>
+          <input type="text" name="price" required placeholder=" "><br><br>
+          <p>Enter the sypnosis of the request</p>
+          <input type="textarea" name="sypnosis" required placeholder=" "><br><br>
+          
           <input type="submit" value="Submit" class="btn btn-primary btn-block">
-
+          
         </form>
         <hr>
+        <h1 class="text-center display-4 my-4">Delete your Script</h1>
+        
+        {{#each files}}
+        
+        <div class="card card-body mb-3"> 
+          <h3>Filename:{{this.filename}} Genre:{{this.metadata.genre}} Time:{{this.uploadDate}} Price:{{this.metadata.price}}</h3>
+          <p>Sypnosis:{{this.metadata.sypnosis}}</p>
+          
+          <form method="POST" action="/users/files/{{this._id}}?_method=DELETE">
+            <button class="btn btn-danger btn-block mt-4">Delete</button>
+          </form>
+         </div> 
+        {{/each}}
+
+
 
       </div>
     </div>
   </div>
+  
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>

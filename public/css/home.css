@@ -22,7 +22,7 @@ body {
   line-height: 44px;
   padding: 0px 50px 15px;
   text-align: center;
-  font-size: 1.25vw;
+  font-size: 1vw;
 }
 
 .welcome {
@@ -64,6 +64,12 @@ body {
 	font-weight: 400; 
 	 font-size: 1vw;
 }
+.aaa{
+	margin-top: 5px;
+}
+.sss{
+	padding:20px 0px 0px 0px;
+}
 .hero1 {
 	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 	 /*font-size: 30px; */
@@ -73,7 +79,7 @@ body {
 	 line-height: 30px; 
   color: #fff;
   line-height: 44px;
-  padding: 20px 80px 45px 80px;
+  padding: 0px 0px 0px 0px;
   text-align: center;
   font-size: 4vw;
   text-transform: uppercase;
@@ -137,7 +143,7 @@ body {
   background: #fff;
   width:100%;
   min-width: 100px;
-  padding: 66px 0 44px 0;
+  padding: 55px 0 35px 0;
   display: grid;
   grid-template-columns: 33.33% 33.33% 33.33%;
 }

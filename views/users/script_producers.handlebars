@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>File Uploads</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/upload.css">
+  </head>
+  <STYLE>A {text-decoration: none;} </STYLE>
+  <body>
+    <div class = "lul">
+      <table  >
+        <tr >
+          <td class="topbtn"><a  class ="insidebutton1 " href="/users/producer">Home</a></div></td>
+          <td class="topbtn"><a  class ="insidebutton1 " href="/users/viewprof">My Profile</a></div></td>
+          <td class="topbtn"><a  class ="insidebutton1 " href="/pages/loggedout">Logout</a></div></td>
+        </tr>
+      </table>
+      </div>
+    <br>
+    <div class="container">
+      <div class="aaa">
+        <h2 class = "hero1"><img class="sss" src="/img/scripto.png" alt="Logo" width="80" height="100"></img><br><br>Scriptomania </h2><br>
+      </div>
+      <div class="row">
+      <div class="col-md-6 m-auto">
+        <h1 class="text-center display-4 my-4">Buy the Script</h1>
+
+        <hr>
+        {{#each files}}   
+          <div class="card card-body mb-3"> 
+
+        <p>Name:{{this.filename}} <br>Genre:{{this.metadata.genre}} <br>Time:{{this.uploadDate}} <br>Price:{{this.metadata.price}}<br>
+        Synopsis:{{this.metadata.sypnosis}}
+        </p>
+
+          
+          <form method="GET" action="/users/producers/files/{{this.metadata.price}}?">
+            <a href = "/users/buy"><button class="btn btn-danger btn-block mt-4">BUY</button></a>
+          </form>
+         </div> 
+        {{/each}}
+
+
+
+      </div>
+    </div>
+  </div>
+  
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+

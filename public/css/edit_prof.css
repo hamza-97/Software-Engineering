@@ -106,21 +106,23 @@ body {
   font-size: 1vw;
   font-weight: 520; 
 }
+.insidebutton1:hover{
+  color: black;
+}
 .info{
   font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
   font-size: 1.5vw;
   font-weight: 600; 
 }
 
-
-
-
-footer{
+.footer{
   /*color:white;*/
   font-size: 1vw;
-  margin-top: 11%;
-  margin-bottom: 5px;
-}
+  position:fixed;
+  bottom: 0;
+  width: 100%;}
+
+
 
  .lul {
   position:fixed;

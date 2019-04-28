@@ -16,12 +16,46 @@ router.get('/', ensureAuthenticated, (req, res) => {
 });
 
 router.get('/writer', (req, res) => {
-  res.render('pages/writer');
+  res.render('pages/writer',{query});
 });
 
-router.get('/editprof', (req, res) => {
-  res.render('pages/editprof');
+router.get('/producer', (req, res) => {
+  res.render('pages/producer');
 });
+
+router.get('/loggedout', (req, res) => {
+  res.render('pages/loggedout');
+});
+
+router.get('/buy', (req, res) => {
+  res.render('users/buy');
+});
+
+// router.get('/view', (req, res) => {
+//   res.render('pages/viewprof');
+
+// });
+
+
+// router.get('/view', function(req, res) {
+// 	console.log("finding")
+//   User.findOne({username: req.body.username}, function(err, Users){
+//     // if (err)
+//     // 	console.log("Best")
+//     //     return done(err);
+
+//     if (Users) {
+//     	console.log(Users)
+//       // console.log("Users count : " + U.length);
+//       res.render('pages/viewprof', {
+//         usersArray: Users
+        
+//       });
+//     }
+//   });
+// });
+
+
 
 // User Register Route
 // router.get('/In', (req, res) => {
