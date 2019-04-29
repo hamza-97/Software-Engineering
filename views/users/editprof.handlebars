@@ -13,7 +13,7 @@
 <STYLE>A {text-decoration: none;} </STYLE>
 <body>
               <div class = "lul">
-            <table  >
+            <table>
               <tr >
              {{#if conditionwp}}
                 <td class="topbtn"><a  class ="insidebutton1 " href="/users/writer">Home</a></div></td>
@@ -22,7 +22,7 @@
               {{/if}}
                 <td class="topbtn"><a  class ="insidebutton1 " href="/users/viewprof">My Profile</a></div></td>
 
-                <td class="topbtn"><a  class ="insidebutton1 " href="/pages/loggedout">Logout</a></div></td>
+                <td class="topbtn"><a  class ="insidebutton1 " href="/users/loggedout">Logout</a></div></td>
               </tr>
             </table>
             </div>
@@ -32,13 +32,17 @@
   <h1 >Edit profile </h1>
   </div>
 <div class="signup_form">
-  <form method ="POST" action="/users/edit_form?_method=PUT">
+  <form method ="POST" action="/users/edit_form/{{conditionwp}}">
+    <label>Username</label>
+    <input type="text" name="username"  <br><br>
     <label>Contact Number</label>
     <input type="integer" name="Contact" required placeholder="+92xxx-xxxxxxx"><br><br>
-    <label>Password</label>
-    <input type="Password" name="Password" required placeholder="Password"><br><br>
-    <label>Confirm password</label>
-    <input type="Password" name="ConfirmPassword" required placeholder="Rewrite Password"><br><br>
+    <label>Enter Old Password</label>
+    <input type="Password" name="oldPassword" required placeholder="Old Password"><br><br>
+    <label>Enter New Password</label>
+    <input type="Password" name="Password" required placeholder="New Password"><br><br>
+    <label>Confirm New Password</label>
+    <input type="Password" name="ConfirmPassword" required placeholder="Rewrite New Password"><br><br>
     <input type="Submit" value="Update">
   </form>
   </div>

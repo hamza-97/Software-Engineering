@@ -1,0 +1,64 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/css/stylesheet.css" />
+  <title>LectureLink | Login</title>
+</head>
+<body style="margin: 0;">
+    <div class="st3" class="container">
+        <a href="splashscreen.html">
+      <img src="img/NEWnewLOGO-01.png" width=10%>
+        </a>
+    </div>
+    <div id="showcase">
+    <button class="course" style="width: 300px; top: 15%;">
+      {{!-- <a href="In.html"> --}}
+        <p class="NormalCharacterStyle">COURSES</p>
+      </a>
+    </button>
+    {{#each courses}}
+        <button class="botn2" style="width: 300px; top: 32%;">
+          <script>
+            var butt = document.getElementsByClassName("botn2")
+            var index = butt.length-2
+            if (index >= 0) {
+              var buttonStyle = butt[index].style
+              var buttonStyleTop = buttonStyle.top
+              var buttonStyleTopAsStr = buttonStyleTop.substr(0,2)
+              var buttonStyleTopAsStrAsInt = parseInt(buttonStyleTopAsStr)
+              var newVal = buttonStyleTopAsStrAsInt + 14
+              var newValAsStr = newVal + "%"
+              butt[index+1].style.top = newValAsStr
+            }
+          </script>
+            <p class="NormalCharacterStyle" style="cursor:pointer;">{{this.[0]}}</p>
+        </button>
+    {{else}}
+      <p>No courses enrolled</p>
+    {{/each}}
+        {{#each allData}}
+        <h1 id="userType" hidden>{{this.type}}</h1>
+        <script>
+          data = document.getElementById("userType")
+          if (data.innerText == "Instructor") {
+            for (i = 0;i < document.getElementsByClassName("botn2").length;i++) {
+              var link = document.createElement('a')
+              link.href = "pages/In"
+              temp = document.getElementsByClassName("botn2")[i].children[1]
+              link.appendChild(temp)
+              document.getElementsByClassName("botn2")[i].appendChild(link)
+            }
+
+          } else {
+            for (i = 0;i < document.getElementsByClassName("botn2").length;i++) {
+              var link = document.createElement('a')
+              link.href = "pages/st"
+              temp = document.getElementsByClassName("botn2")[i].children[1]
+              link.appendChild(temp)
+              document.getElementsByClassName("botn2")[i].appendChild(link)
+            }
+          }
+        </script>
+        {{/each}}
+    </div>
+</body>
