@@ -23,9 +23,7 @@ router.get('/producer', (req, res) => {
   res.render('pages/producer');
 });
 
-router.get('/loggedout', (req, res) => {
-  res.render('pages/loggedout');
-});
+
 
 router.get('/buy', (req, res) => {
   res.render('users/buy');

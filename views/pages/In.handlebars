@@ -1,0 +1,467 @@
+<head>
+    <title>LectureLink</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/css/stylesheet.css" />
+    <link rel="stylesheet" href="/css/countdown.css">
+    <link rel="stylesheet" href="/css/piechart.css">
+    <link rel="stylesheet" href="/css/binary.css">
+    <script src = "/js/Chart.js"></script>
+</head>
+
+<body style="margin: 0; font-family: ITC Avant Garde Gothic Pro;">
+
+    <div class="st3" class="container">
+        <a href="../pages/dashboard">
+            <img src="/img/NEWnewLOGO-01.png" width=10%>
+        </a>
+    </div>
+
+
+    <div class="wrapper">
+        <div class="test">
+            <p class="moduletitle">Binary</p>
+
+            <textarea class="textarea" name="fname" rows="2" cols=""  id="bInput" style="margin-top: 10px; width: 85%"></textarea>
+            <button class="timer__button" style="margin-top: 10px" onclick="binaryUpdate()">Post NOW</button>
+            <div id ="binary"> </div>
+            <div class="popup" onclick="binaryGraph()">Get Results
+                <div id="binaryToggle" class="popups">
+                <span class="popuptext" id="binaryPopup">
+                        <canvas id= "binaryChart" width="200" height="150"></canvas>
+                </span>
+                </div>
+            </div>
+            <div id="root"></div>
+        </div>
+        <div class="test">
+            <p class="moduletitle">MCQ</p>
+            <textarea class="textarea" name="fname" rows="2" cols=""  id="MCQInput" style="margin-top: 10px; width: 85%"></textarea>
+            <button class="timer__button" style="margin-top: 10px" onclick="MCQUpdate()">Post MCQ</button>
+            <div id ="MCQ"> </div>
+            <div class="popup" onclick="mcqGraph()">Get Results
+                <div id="mcqToggle" class="popups">
+                <span class="popuptext" id="mcqPopup">
+                        <canvas id= "mcqChart" width="200" height="150"></canvas>
+                </span> 
+                </div>
+            </div>
+            <div id="root"></div>
+        </div>
+        <div class="test">
+                <p class="moduletitle">Class Satisfaction</p>
+
+            </br>
+            
+            <svg height="30" width="30"><circle cx="15" cy="15" r="10" stroke-width="1" fill="white" /></svg>
+            
+            <svg height="30" width="30"><circle cx="15" cy="15" r="10" stroke-width="1" fill="white" /></svg>
+            
+            <canvas id="myCanvas" width="150" height="50"></canvas>
+            
+            <script>
+            
+            function Graph(config) {
+            
+            // user defined properties
+            
+            this.canvas = document.getElementById(config.canvasId);
+            
+            this.minX = config.minX;
+            
+            this.minY = config.minY;
+            
+            this.maxX = config.maxX;
+            
+            this.maxY = config.maxY;
+            
+            this.unitsPerTick = config.unitsPerTick;
+            
+            
+            
+            // constants
+            
+            this.axisColor = '#aaa';
+            
+            this.font = '8pt Calibri';
+            
+            this.tickSize = 200;
+            
+            
+            
+            // relationships
+            
+            this.context = this.canvas.getContext('2d');
+            
+            this.rangeX = this.maxX - this.minX;
+            
+            this.rangeY = this.maxY - this.minY;
+            
+            this.unitX = this.canvas.width / this.rangeX;
+            
+            this.unitY = this.canvas.height / this.rangeY;
+            
+            this.centerY = Math.round(Math.abs(this.minY / this.rangeY) * this.canvas.height);
+            
+            this.centerX = Math.round(Math.abs(this.minX / this.rangeX) * this.canvas.width);
+            
+            this.iteration = (this.maxX - this.minX) / 1000;
+            
+            this.scaleX = this.canvas.width / this.rangeX;
+            
+            this.scaleY = this.canvas.height / this.rangeY;
+            
+            
+            
+            // draw x and y axis
+            
+            // this.drawXAxis();
+            
+            // this.drawYAxis();
+            
+            }
+            
+            
+            
+            Graph.prototype.drawXAxis = function() {
+            
+            var context = this.context;
+            
+            context.save();
+            
+            context.beginPath();
+            
+            context.moveTo(0, this.centerY);
+            
+            context.lineTo(this.canvas.width, this.centerY);
+            
+            context.strokeStyle = this.axisColor;
+            
+            context.lineWidth = 2;
+            
+            context.stroke();
+            
+            
+            
+            // draw tick marks
+            
+            var xPosIncrement = this.unitsPerTick * this.unitX;
+            
+            var xPos, unit;
+            
+            context.font = this.font;
+            
+            context.textAlign = 'center';
+            
+            context.textBaseline = 'top';
+            
+            
+            
+            // draw left tick marks
+            
+            xPos = this.centerX - xPosIncrement;
+            
+            unit = -1 * this.unitsPerTick;
+            
+            while(xPos > 0) {
+            
+            context.moveTo(xPos, this.centerY - this.tickSize / 2);
+            
+            context.lineTo(xPos, this.centerY + this.tickSize / 2);
+            
+            context.stroke();
+            
+            context.fillText(unit, xPos, this.centerY + this.tickSize / 2 + 3);
+            
+            unit -= this.unitsPerTick;
+            
+            xPos = Math.round(xPos - xPosIncrement);
+            
+            }
+            
+            
+            
+            // draw right tick marks
+            
+            xPos = this.centerX + xPosIncrement;
+            
+            unit = this.unitsPerTick;
+            
+            while(xPos < this.canvas.width) {
+            
+            context.moveTo(xPos, this.centerY - this.tickSize / 2);
+            
+            context.lineTo(xPos, this.centerY + this.tickSize / 2);
+            
+            context.stroke();
+            
+            context.fillText(unit, xPos, this.centerY + this.tickSize / 2 + 3);
+            
+            unit += this.unitsPerTick;
+            
+            xPos = Math.round(xPos + xPosIncrement);
+            
+            }
+            
+            context.restore();
+            
+            };
+            
+            
+            
+            Graph.prototype.drawYAxis = function() {
+            
+            var context = this.context;
+            
+            context.save();
+            
+            context.beginPath();
+            
+            context.moveTo(this.centerX, 0);
+            
+            context.lineTo(this.centerX, this.canvas.height);
+            
+            context.strokeStyle = this.axisColor;
+            
+            context.lineWidth = 2;
+            
+            context.stroke();
+            
+            
+            
+            // draw tick marks
+            
+            var yPosIncrement = this.unitsPerTick * this.unitY;
+            
+            var yPos, unit;
+            
+            context.font = this.font;
+            
+            context.textAlign = 'right';
+            
+            context.textBaseline = 'middle';
+            
+            
+            
+            // draw top tick marks
+            
+            yPos = this.centerY - yPosIncrement;
+            
+            unit = this.unitsPerTick;
+            
+            while(yPos > 0) {
+            
+            context.moveTo(this.centerX - this.tickSize / 2, yPos);
+            
+            context.lineTo(this.centerX + this.tickSize / 2, yPos);
+            
+            context.stroke();
+            
+            context.fillText(unit, this.centerX - this.tickSize / 2 - 3, yPos);
+            
+            unit += this.unitsPerTick;
+            
+            yPos = Math.round(yPos - yPosIncrement);
+            
+            }
+            
+            
+            
+            // draw bottom tick marks
+            
+            yPos = this.centerY + yPosIncrement;
+            
+            unit = -1 * this.unitsPerTick;
+            
+            while(yPos < this.canvas.height) {
+            
+            context.moveTo(this.centerX - this.tickSize / 2, yPos);
+            
+            context.lineTo(this.centerX + this.tickSize / 2, yPos);
+            
+            context.stroke();
+            
+            context.fillText(unit, this.centerX - this.tickSize / 2 - 3, yPos);
+            
+            unit -= this.unitsPerTick;
+            
+            yPos = Math.round(yPos + yPosIncrement);
+            
+            }
+            
+            context.restore();
+            
+            };
+            
+            
+            
+            Graph.prototype.drawEquation = function(equation, color, thickness) {
+            
+            var context = this.context;
+            
+            context.save();
+            
+            context.save();
+            
+            this.transformContext();
+            
+            
+            
+            context.beginPath();
+            
+            context.moveTo(this.minX, equation(this.minX));
+            
+            
+            
+            for(var x = this.minX + this.iteration; x <= this.maxX; x += this.iteration) {
+            
+            context.lineTo(x, equation(x));
+            
+            }
+            
+            
+            
+            context.restore();
+            
+            context.lineJoin = 'round';
+            
+            context.lineWidth = thickness;
+            
+            context.strokeStyle = color;
+            
+            context.stroke();
+            
+            context.restore();
+            
+            };
+            
+            
+            
+            Graph.prototype.transformContext = function() {
+            
+            var context = this.context;
+            
+            
+            
+            // move context to center of canvas
+            
+            this.context.translate(this.centerX, this.centerY);
+            
+            
+            
+            /*
+            
+            * stretch grid to fit the canvas window, and
+            
+            * invert the y scale so that that increments
+            
+            * as you move upwards
+            
+            */
+            
+            context.scale(this.scaleX, -this.scaleY);
+            
+            };
+            
+            var myGraph = new Graph({
+            
+            canvasId: 'myCanvas',
+            
+            minX: -10,
+            
+            minY: -10,
+            
+            maxX: 10,
+            
+            maxY: 10,
+            
+            unitsPerTick: 1
+            
+            });
+            
+            var SatisfactionIndex = 20;
+            
+            
+            
+            var interval = setInterval( increment, 3);
+            
+            const canvas = document.getElementById('myCanvas');
+            
+            const context = canvas.getContext('2d');
+            
+            function increment(){
+            
+            context.clearRect(0, 0, 150, 50);
+            
+            SatisfactionIndex = SatisfactionIndex % 360 - 0.05;
+            
+            myGraph.drawEquation(function(x) {
+            
+            if (SatisfactionIndex < 5)
+            
+            SatisfactionIndex = SatisfactionIndex + 0.03;
+            
+            if (SatisfactionIndex < -10)
+            
+            SatisfactionIndex == 10;
+            
+            return (x * x)/SatisfactionIndex;
+            
+            }, 'white', 3);
+            
+            }
+            
+            </script>
+            
+            </div>        
+        <div class="test">
+            <p class="moduletitle">Timer</p>
+            <div class="timer">
+                <div class="timer">
+                    <form name="customForm">
+                        <input type="text" name="minutes" class="textbox" placeholder="Enter Minutes" style="width: 60%" autocomplete="off">
+                    </form>
+                    <div class="display">
+                        <h1 class="display__time-left" style="font-size: 50px; margin-top: 0.15em"></h1>
+                        <p class="display__end-time" style="font-size: 12px; margin-bottom: 0em"></p>
+                        <img src="/img/play-01.png" id="play" width=10% style="margin-top: 3px; margin-bottom: 3px; cursor: pointer;" onclick="playpause()">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="test">
+            <p class="moduletitle"  style="margin-bottom: 10px">Outline</p>
+            <ul id="myUL">
+                <div class="flexContainer">
+                    <input type="text" name="fname" class="textbox">
+                    <div class="close">&times</div>
+                </div>
+                <div class="flexContainer">
+                    <input type="text" name="fname" class="textbox">
+                    <div class="close">&times</div>
+                </div>
+                <div class="flexContainer">
+                    <input type="text" name="fname" class="textbox">
+                    <div class="close">&times</div>
+                </div>
+            </ul>
+            <button class="timer__button" style="border-radius: 100%; padding-top: 1px" onclick="newElement()">+</button>
+        </div>
+        <div class="test">
+            <p class="moduletitle">Ranker</p>
+            <button class="timer__button" style="border-radius: 100%; font-size: 60px; margin-top: 15px ; padding-left: 30px; padding-right: 30px; padding-bottom: 20px;">+</button>
+        </div>
+        <div class="CP">
+            <p class="moduletitle">Class Participation</p>
+                <button class="timer__button" style="margin-top: 10px" onclick="cpTime()">Allow CP</button>
+                <div id ="cp"> </div>
+
+
+        </div>
+    </div>
+    
+    {{#each scripts}}
+        <script src={{script}}></script>
+    {{/each}}
+</body>
+
+
