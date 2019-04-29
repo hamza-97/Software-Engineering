@@ -12,7 +12,7 @@
         <tr >
           <td class="topbtn"><a  class ="insidebutton1 " href="/users/writer">Home</a></div></td>
           <td class="topbtn"><a  class ="insidebutton1 " href="/users/view">My Profile</a></div></td>
-          <td class="topbtn"><a  class ="insidebutton1 " href="/users/loggedout">Logout</a></div></td>
+          <td class="topbtn"><a  class ="insidebutton1 " href="/pages/loggedout">Logout</a></div></td>
         </tr>
       </table>
       </div>
@@ -42,12 +42,12 @@
           <input type="radio" name="genre" value="Romance">
           <label>Romance</label>
           <input type="radio" name="genre" value="Action">
-          <label>Action</label><br><br>
+          <label>Action</label>
           <input type="radio" name="genre" value="Fantasy">
           <label>Fantasy</label>
           <input type="radio" name="genre" value="Mystery">
           <label>Mystery</label>
-          <input type="radio" name="genre" value="Fiction">
+          <input type="radio" name="genre" value="Science Fiction">
           <label>Science Fiction</label>
           <input type="radio" name="genre" value="Psifi">
           <label>Psifi</label>
@@ -61,33 +61,12 @@
         </form>
         <hr>
         <h1 class="text-center display-4 my-4">Delete your Script</h1>
-        <form action="/users/filter" method="POST" >
-        <p>Select the Genre, You want to filter your scripts and then press submit</p>
-          <input type="radio" name="genref" value="Thriller">
-          <label>Thriller</label>
-          <input type="radio" name="genref" value="Horror">
-          <label>Horror</label>
-          <input type="radio" name="genref" value="Romance">
-          <label>Romance</label>
-          <input type="radio" name="genref" value="Action">
-          <label>Action</label><br><br>
-          <input type="radio" name="genref" value="Fantasy">
-          <label>Fantasy</label>
-          <input type="radio" name="genref" value="Mystery">
-          <label>Mystery</label>
-          <input type="radio" name="genref" value="Fiction">
-          <label>Science Fiction</label>
-          <input type="radio" name="genref" value="Psifi">
-          <label>Psifi</label>
-          <input type="submit" value="Click to Filter" class="btn btn-primary btn-block"><br><br>
-          </form>
         
         {{#each files}}
         
         <div class="card card-body mb-3"> 
-          <p>Name:{{this.filename}} <br>Genre:{{this.metadata.additional_data.genre}} <br>Time:{{this.uploadDate}} <br>Price:{{this.metadata.additional_data.price}}<br>
-        Synopsis:{{this.metadata.additional_data.sypnosis}}
-        </p>
+          <h3>Filename:{{this.filename}} Genre:{{this.metadata.genre}} Time:{{this.uploadDate}} Price:{{this.metadata.price}}</h3>
+          <p>Sypnosis:{{this.metadata.sypnosis}}</p>
           
           <form method="POST" action="/users/files/{{this._id}}?_method=DELETE">
             <button class="btn btn-danger btn-block mt-4">Delete</button>

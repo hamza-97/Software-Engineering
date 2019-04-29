@@ -28,7 +28,6 @@ const mongoURI = 'mongodb+srv://scriptomania:group23@script-6wmwk.mongodb.net/te
 var id = ""
 var filers = ""
 var name = ""
-var writer_details 
 // Create mongo connection
 const conn = mongoose.createConnection(mongoURI);
 // User main page
@@ -62,57 +61,17 @@ router.get('/signup', (req, res) => {
 
 router.get('/editprofw', (req, res) => {
   res.render('users/editprof',{
-    conditionwp: writer_details.user
+    conditionwp: true
   });
 });
 
 router.get('/editprofp', (req, res) => {
   res.render('users/editprof',{
-    conditionwp: writer_details.user
+    conditionwp:false
   });
 });
 
-router.get('/loggedout', (req, res) => {
-  writer_details = ""
-  res.render('users/loggedout');
-});
-// Edit profie
 
-router.post('/edit_form/:writerdetails', (req, res) => {
-    User.findOne({username: req.body.username}, function(err, user){
-     if(err)return handleErr(err);
-     bcrypt.compare(req.body.oldPassword, user.password, (err, isMatch) => {
-      if(err) throw err;
-      if(isMatch){
-         bcrypt.genSalt(10, (err, salt) => {
-      
-              bcrypt.hash(req.body.Password, salt, (err, hash) => {
-                
-                if(err) throw err;
-                user.password = hash;
-                user.contact = req.body.Contact;
-                user.save(function(err){
-                // if(err)return handleErr(err);
-                //user has been updated
-                });
-                
-              })
-            });
-       }
-
-        else {
-          console.log("Edit Credentials wrong");
-          res.redirect("/users/editprof");
-        }
-        });
-     });
-  if (req.params.writerdetails == 'Writer'){
-    res.redirect('/users/writer')
-  }else{
-    res.redirect('/users/producer')
-  }
-
-});
 // router.get('/', (req, res) => {
 //   res.render('pages/writer',{
 //      names:name
@@ -130,16 +89,15 @@ router.post('/submit_login_form', (req, res, next) => {
     bcrypt.compare(req.body.password, user.password, (err, isMatch) => {
       if(err) throw err;
       if(isMatch){
-        writer_details = user;
         id = user.username;
         name = user.name
-        // console.log(name)
+        console.log(name)
         if(user.user == "Writer"){
-          // console.log(user.user)
+          console.log(user.user)
           res.redirect('/users/writer')
         }
         if(user.user == "Producer"){
-          // console.log(user.user)
+          console.log(user.user)
           res.redirect('/users/producer')
 
         }
@@ -148,7 +106,7 @@ router.post('/submit_login_form', (req, res, next) => {
       }
       else {
         console.log("Credentials wrong");
-        res.redirect("/users/login");
+        res.end("Login invalid");
       }
     });  
   });
@@ -202,7 +160,25 @@ router.get('/view', function(req, res) {
 });
 
 
+// Edit profie
 
+router.put('/edit_form', (req, res) => {
+
+  console.log(req.body.Contact)
+  console.log("About to edit ",id)
+  User.update({username:id}, {$set:{contact:req.body.Contact}});
+    //  User.updateOne({username:id}, function(err, Users){
+
+    // if (Users) {
+    //   console.log("Found user");
+    //   Users.contact : req.body.Contact;
+    //   console.log(Users.contact)
+    //   Users.password = req.body.Password;
+
+    res.redirect('/users/writer')
+// }
+// });
+});
 
 
 let gfs;
@@ -226,7 +202,7 @@ const storage = new GridFsStorage({
         const filename = file.originalname;
         const fileInfo = {
           filename: filename,
-          metadata: {additional_data:req.body, writer_details:writer_details},
+          metadata: req.body,
           bucketName: 'uploads'
         };
         resolve(fileInfo);
@@ -236,8 +212,7 @@ const storage = new GridFsStorage({
 });
 const upload = multer({ storage });
 
-var truefilearray = []
-var truefilterarray = []
+
 // @route GET /
 // @desc Loads form
 router.get('/up', (req, res) => {
@@ -259,68 +234,12 @@ router.get('/up', (req, res) => {
         }
 
       });
-      // console.log(files[0].metadata.writer_details.username)
-      truefilearray = []
-      for(var i = 0; i < files.length;i++){
-        console.log(files[i].metadata.writer_details.username)
-        console.log(writer_details.username)
-        // console.log(writer_details.username)
-        if (files[i].metadata.writer_details.username == writer_details.username){
-              truefilearray.push(files[i])
-          
-            }
-          }
 
-          res.render('users/script_upload', { files:truefilearray });
-        }
-            })
+      res.render('users/script_upload', { files: files });
+    }
   });
 
-router.post('/filter', (req, res) => {
-
-  gfs.files.find().toArray((err, files) => {
-    // Check if files
-    if (!files || files.length === 0) {
-
-      res.render('users/script_upload', { files: false });
-    } else {
-      files.map(file => {
-        if (
-          file.contentType === 'image/jpeg' ||
-          file.contentType === 'image/png'
-        ) {
-          file.isImage = true;
-        } else {
-          file.isImage = false;
-        }
-
-      });
-      // console.log(req.body)
-      // console.log(files[0].metadata.writer_details.username)
-      truefilterarray = []
-      for(var i = 0; i < files.length;i++){
-        // console.log(files[i].metadata.writer_details.username)
-        // console.log(writer_details.username)
-        // console.log(writer_details.username)
-        if (files[i].metadata.writer_details.username == writer_details.username && files[i].metadata.additional_data.genre == req.body.genref){
-              truefilterarray.push(files[i])
-          
-            }
-          }
-
-          res.render('users/script_upload', { files:truefilterarray });
-        }
-            })
-  });          
-
-        
-    
-        
-
-    
-
-
-
+});
 router.get('/read', (req, res) => {
 
   gfs.files.find().toArray((err, files) => {
@@ -471,71 +390,26 @@ router.delete('/files/:id', (req, res) => {
   });
 });
 
-var file_id
-var masterfile
+
 // Edit Form POST
 // gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
-router.get('/producers/files/:id', (req, res) => {
-  // console.log(req.params.id)
-  gfs.files.find().toArray((err, files) => {
-    console.log(files)
-      for(var i = 0; i < files.length;i++){
-        if (files[i]._id == req.params.id){
-          file_id = files[i]._id;
-          masterfile= files[i]
-          price = files[i].price;
-          // console.log(files[i].metadata)
-          // console.log(masterfile)
+router.get('/producers/files/:price', (req, res) => {
 
-        }
-  }
-    res.redirect('/users/buy',);
+  // metadata = req.
+  // console.log(req.params.id)
+  price = req.params.price
+  // gfs.files.findOne({_id:fileid}, (err, file) => {
+  //   console.log(file.filename)
+  //   console.log("OK ",fileid)
+  //   filers = file.metadata.price
+
+    res.redirect('/users/buy');
   });
-});
 
 
 router.get('/buy', (req, res) => {
-  // res.render('users/buy' );
-  res.render('users/buy' , {file:masterfile});
+  res.render('users/buy' , {price});
 });
-
-
-// POST FORM PAYMENT
-var download_file
-router.post('/buy_form/:id', (req, res,next) => {
-  // console.log(req.params.id)
-  // var filePath = "/s3/file/path/..."; // Or format the path using the `id` rest param
-  // var fileName = masterfile.filename; // file name 
-  // res.download(filePath, fileName)
-  // next();
-
-
-    /** First check if file exists */
-     gfs.files.find().toArray((err, files) => {
-    
-      for(var i = 0; i < files.length;i++){
-        if (files[i]._id == req.params.id){
-          
-          download_file= files[i]
-          
-          
-
-        }
-  }
-        // create read stream
-        var readstream = gfs.createReadStream({
-            _id: download_file._id,
-            root: "uploads"
-        });
-        // set the proper content type 
-        res.set('Content-Type', download_file.contentType)
-        // Return response
-        return readstream.pipe(res);
-    });
-});
-  // res.end("Payment successful")
-  // res.redirect("/users/producer")
-
 
 
 // // Login Form POST
@@ -609,6 +483,13 @@ router.post('/submit_signup_form', (req, res) => {
 });
 
 
+
+// POST FORM PAYMENT
+
+router.post('/buy_form', (req, res, next) => {
+res.end("Payment successful")
+res.redirect("/users/producer")
+});
 
 
 // router.post('/login', (req, res, next) => {

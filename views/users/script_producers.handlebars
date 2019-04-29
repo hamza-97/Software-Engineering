@@ -12,7 +12,7 @@
         <tr >
           <td class="topbtn"><a  class ="insidebutton1 " href="/users/producer">Home</a></div></td>
           <td class="topbtn"><a  class ="insidebutton1 " href="/users/viewprof">My Profile</a></div></td>
-          <td class="topbtn"><a  class ="insidebutton1 " href="/users/loggedout">Logout</a></div></td>
+          <td class="topbtn"><a  class ="insidebutton1 " href="/pages/loggedout">Logout</a></div></td>
         </tr>
       </table>
       </div>
@@ -29,13 +29,12 @@
         {{#each files}}   
           <div class="card card-body mb-3"> 
 
-        <p>Name:{{this.filename}} <br>Genre:{{this.metadata.additional_data.genre}} <br>Time:{{this.uploadDate}} <br>Price:{{this.metadata.additional_data.price}}<br>
-        Synopsis:{{this.metadata.additional_data.sypnosis}}
+        <p>Name:{{this.filename}} <br>Genre:{{this.metadata.genre}} <br>Time:{{this.uploadDate}} <br>Price:{{this.metadata.price}}<br>
+        Synopsis:{{this.metadata.sypnosis}}
         </p>
-        
 
           
-          <form method="GET" action="/users/producers/files/{{this._id}}?_">
+          <form method="GET" action="/users/producers/files/{{this.metadata.price}}?">
             <a href = "/users/buy"><button class="btn btn-danger btn-block mt-4">BUY</button></a>
           </form>
          </div> 
