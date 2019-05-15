@@ -23,6 +23,9 @@ router.get('/producer', (req, res) => {
   res.render('pages/producer');
 });
 
+router.get('/admin', (req, res) => {
+  res.render('users/admin');
+});
 
 
 router.get('/buy', (req, res) => {
