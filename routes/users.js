@@ -54,6 +54,9 @@ router.get('/login', (req, res) => {
 router.get('/signup', (req, res) => {
   res.render('users/register');
 });
+router.get('/admin', (req, res) => {
+  res.render('users/admin');
+});
 
 
 // router.get('/producer', (req, res) => {
