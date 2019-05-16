@@ -37,7 +37,7 @@ router.get('/home', (req, res) => {
 });
 // Payment Route
 
-
+console.log("Ok")
 router.get('/writer', (req, res) => {
   res.render('users/writer',{name});
 });
