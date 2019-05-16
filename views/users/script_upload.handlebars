@@ -17,90 +17,59 @@
       </table>
       </div>
     <br>
-  <div class="container">
-<div style="font-family: Courier New, Courier,Lucida Sans Typewriter, Lucida Typewriter, monospace; font-style: normal;font-variant:normal; font-weight: 400; line-height: 30px; color: #fff;line-height: 44px;padding: 20px 80px 10px 80px; text-align:center;font-size: 4vw;
-    text-transform: uppercase;">
-</div>
+  
  <div class="aaa">
         <h2 class = "hero1"><img class="sss" src="/img/scripto.png" alt="Logo" width="80" height="100"></img><br><br>Scriptomania </h2><br>
       </div>
-    <div class="row">
+    <!-- <div class="row"> -->
       <div class="col-md-6 m-auto">
-        <h1 class="text-center display-4 my-4">Upload your Script</h1>
-        <form action="/users/upload" method="POST" enctype="multipart/form-data">
+        <h2 class="welcome">Upload your Script</h2>
+        <div class ="signup_form">
+        <form  action="/users/upload" method="POST" enctype="multipart/form-data">
           <div class="custom-file mb-3">
             <input type="file" name="file" id="file" class="custom-file-label">
             <label for="file" class="custom-file-label">Choose File</label>
           </div>
             
           
-          <p>Select the Genre</p>
-          <input type="radio" name="genre" value="Thriller">
-          <label>Thriller</label>
-          <input type="radio" name="genre" value="Horror">
-          <label>Horror</label>
-          <input type="radio" name="genre" value="Romance">
-          <label>Romance</label>
-          <input type="radio" name="genre" value="Action">
-          <label>Action</label><br><br>
-          <input type="radio" name="genre" value="Fantasy">
-          <label>Fantasy</label>
-          <input type="radio" name="genre" value="Mystery">
-          <label>Mystery</label>
-          <input type="radio" name="genre" value="Fiction">
-          <label>Science Fiction</label>
-          <input type="radio" name="genre" value="Psifi">
-          <label>Psifi</label>
-          <p>Enter the price of the Script</p>
-          <input type="text" name="price" required placeholder=" "><br><br>
-          <p>Enter the sypnosis of the request</p>
-          <input type="textarea" name="sypnosis" required placeholder=" "><br><br>
+          <p class="a">Select the Genre</p>
+
+          <label class="label"><input class="input" type="radio" name="genre" value="Horror" checked>
+          Horror</label>
+         
+          <label class="label"><input class="input" type="radio" name="genre" value="Action">
+          Action</label>
+          <label class="label"><input class="input" type="radio" name="genre" value="Fantasy">
+          Fantasy</label>
+          <label class="label"><input class="input" type="radio" name="genre" value="Mystery">
+          Mystery</label>
+           <label class="label"><input class="input" type="radio" name="genre" value="Romance">
+          Romance</label>
+           <label class="label"><input class="input" type="radio" name="genre" value="Thriller">
+          Thriller</label>
+          <label class="label"><input class="input" type="radio" name="genre" value="Science Fiction">
+          Science Fiction</label>
+          <br>
+          <p class="a">Price of the Script</p>
+          <input class="signup_form_input" type="text" name="price" required placeholder="Price" required pattern="[0-9]+"><br><br><br>
           
-          <input type="submit" value="Submit" class="btn btn-primary btn-block">
+          <p class="a">Running Time of Script</p>
+          <input class="signup_form_input" type="textarea" name="duration" required placeholder="Minutes" required pattern="[0-9]+"><br><br><br>
+          
+          <p class="a">Number of characters</p>
+          <input class="signup_form_input" type="text" name="noc" required placeholder="Number of Characters" required pattern="[0-9]+"><br><br><br>
+          
+          <p class="a">Sypnosis of the Script</p>
+          <input class="signup_form_input" type="textarea" name="sypnosis" required placeholder="Synopsis..."><br><br><br>
+          
+          <input class="big" type="submit" value="Submit" >
           
         </form>
-        <hr>
-        <h1 class="text-center display-4 my-4">Delete your Script</h1>
-        <form action="/users/filter" method="POST" >
-        <p>Select the Genre, You want to filter your scripts and then press submit</p>
-          <input type="radio" name="genref" value="Thriller">
-          <label>Thriller</label>
-          <input type="radio" name="genref" value="Horror">
-          <label>Horror</label>
-          <input type="radio" name="genref" value="Romance">
-          <label>Romance</label>
-          <input type="radio" name="genref" value="Action">
-          <label>Action</label><br><br>
-          <input type="radio" name="genref" value="Fantasy">
-          <label>Fantasy</label>
-          <input type="radio" name="genref" value="Mystery">
-          <label>Mystery</label>
-          <input type="radio" name="genref" value="Fiction">
-          <label>Science Fiction</label>
-          <input type="radio" name="genref" value="Psifi">
-          <label>Psifi</label>
-          <input type="submit" value="Click to Filter" class="btn btn-primary btn-block"><br><br>
-          </form>
-        
-        {{#each files}}
-        
-        <div class="card card-body mb-3"> 
-          <p>Name:{{this.filename}} <br>Genre:{{this.metadata.additional_data.genre}} <br>Time:{{this.uploadDate}} <br>Price:{{this.metadata.additional_data.price}}<br>
-        Synopsis:{{this.metadata.additional_data.sypnosis}}
-        </p>
-          
-          <form method="POST" action="/users/files/{{this._id}}?_method=DELETE">
-            <button class="btn btn-danger btn-block mt-4">Delete</button>
-          </form>
-         </div> 
-        {{/each}}
-
-
-
       </div>
     </div>
-  </div>
   
+
+
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
@@ -108,5 +77,11 @@
     crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+    
+<div class="qq">
+ <footer class="footer">©2019 Scriptomania, Inc.</footer>
+</div>
 </body>
 
+
+</html>

@@ -3,6 +3,7 @@
 }
 
 body {
+  margin-top: 80px;
   background: #293f50;
   color: #888;
   font: 300 16px/22px "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
@@ -21,12 +22,13 @@ body {
   /*padding-top:10px*/
 }
 .login-form-wrap {
+
   background: white;
   border: 1px solid #2d416d;
   box-shadow: 0 1px #5670A4 inset, 0 0 10px 5px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   width: 600px;
-  height: 440px;
+  height: 430px;
   margin: 60px auto;
   padding: 50px 30px 0 30px;
   text-align: center;
@@ -38,7 +40,7 @@ body {
   color: #888;
 }
 .login-form-wrap h5 {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 

@@ -28,35 +28,36 @@ function pop(){
 <div class="signup_form">
   <form action="/users/submit_signup_form" method = "POST">
     <label>Name</label>
-    <input type="text"  name="Name" required placeholder="Name" maxlength="20" required pattern="[A-Za-z]+"></input>
+    <input class="signup_form_input" type="text"  name="Name" required placeholder="Name" maxlength="20" required pattern="[A-Za-z\s]+"></input>
     <br><br>
     <label>Email</label>
-    <input type="email" name="email" required placeholder="Email" maxlength="30" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$+"><br><br>
+    <input class="signup_form_input" type="email" name="email" required placeholder="Email" maxlength="30" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$+"><br><br>
     <label>Contact Number</label>
-    <input type="integer" name="Contact"  required placeholder="0092-xxx-xxxxxxx" maxlength="14" required pattern="[0-9]+"><br><br>
+    <input class="signup_form_input" type="integer" name="Contact"  required placeholder="0092-xxx-xxxxxxx" maxlength="14" required pattern="[0-9]+.{13,}" ><br><br>
     <label>CNIC</label>
-    <input type="text" name="CNIC" required placeholder="xxxxx-xxxxxxx-x"  maxlength="15" required pattern="[0-9-]+"><br><br>
+    <input class="signup_form_input" type="text" name="CNIC" required placeholder="xxxxx-xxxxxxx-x"  maxlength="15" required pattern="[0-9-]+.{14,}"><br><br>
     <label>Date of Birth</label>
-    <input type="Date" name="date" required><br><br>
+    <input class="signup_form_input" type="Date" name="date" required><br><br>
     <label>Username</label>
-    <input type="text" name="Username"  required placeholder="Username" maxlength="10" required pattern="[A-Za-z0-9._-]+"><br><br>
+    <input class="signup_form_input" type="text" name="Username"  required placeholder="Username" maxlength="10" required pattern="[A-Za-z0-9._-]+"><br><br>
     <label>Password</label>
-    <input type="Password" name="Password" required placeholder="Password" maxlength="15"><br><br>
+    <input class="signup_form_input" type="Password" name="Password" required placeholder="Password (min-length=6)" maxlength="15" pattern=".{6,}"><br><br>
     <label>Confirm password</label>
-    <input type="Password" name="ConfirmPassword" required placeholder="Password" maxlength="15"><br>
-    
-    <div>
-    <label class="labell"><input class="inputt" type="radio" name="user" value="Writer"></input><br><br>Writer</label>
-   
-    <label class="labell"><input class="inputt" type="radio" name="user" value="Producer"></input><br><br>Producer</label>
-    
-    <input type="checkbox" name="Agree"></input>
-  
-    <label>I agree to the <a href ="#" onclick="pop();">terms and conditions</a></label>
+    <input class="signup_form_input" type="Password" name="ConfirmPassword" required placeholder="Password" maxlength="15" pattern=".{6,}"><br>
     <br>
-   </div>   
     
-    <input type="Submit" value="signup">
+    
+    <label class="label"><input class="input" type="radio" name="user" value="Writer" checked></input> Writer</label><br>
+   
+    <label class="label"><input class="input" type="radio" name="user" value="Producer"></input> Producer</label><br>
+    
+    <label class="label"><input class="input" type="checkbox" name="Agree"  required></input>
+  
+    I agree to the <a href ="#" onclick="pop();">terms and conditions.</a></label>
+  
+   
+    
+    <input type="Submit" value="Signup">
   </form>
   </div>
   <h4 style ="color: black"><a href = "login">Already have an account? Click here to login!</a></h4>

@@ -30,6 +30,32 @@ width: 100%;
 vertical-align:right;
 clear: both;
 }
+
+.signup_form input[type="submit"] {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  background: linear-gradient(to bottom, #e0e0e0 0%, #cecece 100%);
+  display: block;
+  margin: 20px auto 0 auto;
+  width: 100%;
+  border: none;
+  border-radius: 3px;
+  padding: 8px;
+  font-size: 17px;
+  color: #636363;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+  font-weight: 700;
+  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.17), 0 1px 0 rgba(255, 255, 255, 0.36) inset;
+}
+.signup_form input[type="submit"]:hover {
+  background: #DDD;
+}
+.signup_form input[type="submit"]:active {
+  padding-top: 9px;
+  padding-bottom: 7px;
+  background: #C9C9C9;
+}
+
 .Signup-form{
   background: white;
   border: 1px solid #2d416d;
@@ -37,7 +63,7 @@ clear: both;
   border-radius: 5px;
   width: 40%;
   min-width: 40px;
-  height:45%;
+  height:530px;
   margin: 60px auto;
   padding: 10px 30px 10px 30px;
   text-align: center;
@@ -103,7 +129,7 @@ body {
 .insidebutton1{
   color: white;
   font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-  font-size: 1vw;
+  font-size: 1.2vw;
   font-weight: 520; 
 }
 .insidebutton1:hover{
@@ -126,8 +152,8 @@ body {
 
  .lul {
   position:fixed;
-  top:5px;
-  right: 5px;
+  top:13px;
+  right: 13px;
   color: black;
  /*background-color: white;*/
  float: right;
@@ -148,6 +174,7 @@ text-align:right;
   color: #fff;
   cursor: pointer;
   width:33%;
+  height:26px;
   /*min-width: 100px;
   height: 40%;
   min-height: 70px;*/

@@ -14,13 +14,17 @@ body {
 	 line-height: 30px; 
   line-height: 44px;
   padding: 0px 0px 0px 0px;
-  font-size: 2.5vw;
+  font-size: 3vw;
   text-align: center;
 }
 
 .sss{
 	padding:20px 0px 0px 0px;
 
+}
+.a{
+  font-size: 2vw;
+  color:white;
 }
 .hero1 {
 	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
@@ -41,7 +45,7 @@ body {
 .insidebutton1{
 	color: white;
 	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-	font-size: 1vw;
+	font-size: 1.2vw;
 	font-weight: 520; 
 }
 
@@ -52,17 +56,22 @@ body {
 }
 
 .footer{
-
   font-size: 1vw;
-  position:fixed;
-  bottom: 0;
+  position:relative;
+  bottom:0;
   width: 100%;
 }
-
- .lul {
-  position:fixed;
-  top:5px;
-  right: 5px;
+.qq{
+  bottom: 0;
+}
+.width{
+  width: 100%;
+  align-self: left;
+}
+.lul {
+  position:relative;
+  top:13px;
+  right: 13px;
   color: black;
  /*background-color: white;*/
  float: right;
@@ -73,16 +82,41 @@ text-align:right;
  display: grid inline-block;
   grid-template-columns: 33.33%, 33.33% 33.33%;
 }
-
+.row{
+  display:flex;
+}
+.column{
+  flex:30%;
+}
+.bold{
+  font-size: 1.25vw;
+  text-align: left;
+  padding-left: 20px;
+}
+.bold2{
+  font-size: 1.25vw;
+  text-align: left;
+  padding-left: 100px;
+}
+.bold3{
+  font-size: 1.25vw;
+  text-align: left;
+  padding-left: 150px;
+}
+.bold1{
+  font-size: 1.25vw;
+  text-align: left;
+  padding-left: 5px;
+}
 .topbtn{
 
   text-align:center;
   background: #293f50;
-  border-radius: 6px;
+  border-radius: 3px;
   color: #fff;
   cursor: pointer;
   width:33%;
-
+  height:26px;
   font-weight: 300;
   letter-spacing: .4px;
   text-transform: uppercase;
@@ -100,4 +134,77 @@ text-align:right;
 .insidebutton1:hover{
   color: black;
 
+}
+.signup_form{
+  text-align: left;
+  /*color: #888;*/
+  font-weight: 500;
+  clear: both;
+  margin-bottom: 35px;
+
+}
+.signup_form_input{
+width: 100%;
+vertical-align:right;
+clear: both;
+}
+
+.signup_form input[type="submit"] {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  background: linear-gradient(to bottom, #e0e0e0 0%, #cecece 100%);
+  display: block;
+  margin: 20px auto 0 auto;
+  width: 100%;
+  border: none;
+  border-radius: 3px;
+  padding: 8px;
+  font-size: 17px;
+  color: #636363;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+  font-weight: 700;
+  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.17), 0 1px 0 rgba(255, 255, 255, 0.36) inset;
+}
+.signup_form input[type="submit"]:hover {
+  background: #DDD;
+}
+.signup_form input[type="submit"]:active {
+  padding-top: 9px;
+  padding-bottom: 7px;
+  background: #C9C9C9;
+}
+
+.Signup-form{
+  background: white;
+  border: 1px solid #2d416d;
+  box-shadow: 0 1px #5670A4 inset, 0 0 10px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  width: 40%;
+  min-width: 40px;
+  height:430px;
+  margin: 60px auto;
+  padding: 10px 30px 10px 30px;
+  text-align: center;
+  /*color:#888;*/
+}
+
+.label {
+  display: block;
+  padding-left: 15px;
+  text-indent: -15px;
+  font-size: 1.5vw;
+}
+.input {
+  width: 13px;
+  height: 13px;
+  padding: 0;
+
+  margin:0;
+  vertical-align: bottom;
+  position: relative;
+  top: -5px;
+  *overflow: hidden;
+}
+.left{
+  text-align: center;
 }

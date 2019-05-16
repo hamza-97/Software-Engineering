@@ -54,9 +54,6 @@ router.get('/login', (req, res) => {
 router.get('/signup', (req, res) => {
   res.render('users/register');
 });
-router.get('/admin', (req, res) => {
-  res.render('users/admin');
-});
 
 
 // router.get('/producer', (req, res) => {
@@ -65,32 +62,42 @@ router.get('/admin', (req, res) => {
 
 router.get('/editprofw', (req, res) => {
   res.render('users/editprof',{
-    conditionwp: writer_details.user
+    conditionwp: true
+    // conditionwp: True
   });
 });
 
 router.get('/editprofp', (req, res) => {
   res.render('users/editprof',{
-    conditionwp: writer_details.user
+    conditionwp: false
   });
 });
 
 router.get('/loggedout', (req, res) => {
-  writer_details = ""
+  writer_details = "";
+  req.logout();
   res.render('users/loggedout');
 });
 // Edit profie
 
 router.post('/edit_form/:writerdetails', (req, res) => {
+    if(req.body.Password != req.body.ConfirmPassword){
+        console.log("Passwords not matched")
+        req.flash('error_msg', 'New passwords do not match!');
+          res.redirect("/users/editprof");
+      }else{
+
     User.findOne({username: req.body.username}, function(err, user){
-     if(err)return handleErr(err);
-     bcrypt.compare(req.body.oldPassword, user.password, (err, isMatch) => {
+      if(user == null){
+        req.flash('error_msg', 'Please enter your correct old password!');
+        res.redirect("/users/editprof");
+      }
+      else{
+        bcrypt.compare(req.body.oldPassword, user.password, (err, isMatch) => {
       if(err) throw err;
       if(isMatch){
          bcrypt.genSalt(10, (err, salt) => {
-      
-              bcrypt.hash(req.body.Password, salt, (err, hash) => {
-                
+              bcrypt.hash(req.body.Password, salt, (err, hash) => { 
                 if(err) throw err;
                 user.password = hash;
                 user.contact = req.body.Contact;
@@ -105,11 +112,17 @@ router.post('/edit_form/:writerdetails', (req, res) => {
 
         else {
           console.log("Edit Credentials wrong");
+          req.flash('error_msg', 'Please enter your correct old password!');
           res.redirect("/users/editprof");
         }
         });
+
+      }
+     // if(err)return handleErr(err);
+     
      });
-  if (req.params.writerdetails == 'Writer'){
+  }
+  if (req.params.writerdetails == "true"){
     res.redirect('/users/writer')
   }else{
     res.redirect('/users/producer')
@@ -130,8 +143,13 @@ router.post('/edit_form/:writerdetails', (req, res) => {
 
 router.post('/submit_login_form', (req, res, next) => {
   User.findOne({ username: req.body.username}, function(err, user) {
-    bcrypt.compare(req.body.password, user.password, (err, isMatch) => {
-      if(err) throw err;
+    console.log(user)
+    if(user == null) {
+      req.flash('error_msg', 'Please enter valid username or password!');
+      res.redirect("/users/login")
+    }else{
+      bcrypt.compare(req.body.password, user.password, (err, isMatch) => {
+      // if(err) res.redirect("/users/login");
       if(isMatch){
         writer_details = user;
         id = user.username;
@@ -143,6 +161,7 @@ router.post('/submit_login_form', (req, res, next) => {
         }
         if(user.user == "Producer"){
           // console.log(user.user)
+
           res.redirect('/users/producer')
 
         }
@@ -151,9 +170,13 @@ router.post('/submit_login_form', (req, res, next) => {
       }
       else {
         console.log("Credentials wrong");
+        req.flash('error_msg', 'Please enter valid username or password!');
         res.redirect("/users/login");
       }
-    });  
+    });
+
+    }
+      
   });
 });
 
@@ -229,7 +252,7 @@ const storage = new GridFsStorage({
         const filename = file.originalname;
         const fileInfo = {
           filename: filename,
-          metadata: {additional_data:req.body, writer_details:writer_details},
+          metadata: {additional_data:req.body, writer_details:writer_details, status:"unsold", helpername: "noname"},
           bucketName: 'uploads'
         };
         resolve(fileInfo);
@@ -265,8 +288,8 @@ router.get('/up', (req, res) => {
       // console.log(files[0].metadata.writer_details.username)
       truefilearray = []
       for(var i = 0; i < files.length;i++){
-        console.log(files[i].metadata.writer_details.username)
-        console.log(writer_details.username)
+        // console.log(files[i].metadata.writer_details.username)
+        // console.log(writer_details.username)
         // console.log(writer_details.username)
         if (files[i].metadata.writer_details.username == writer_details.username){
               truefilearray.push(files[i])
@@ -279,13 +302,124 @@ router.get('/up', (req, res) => {
             })
   });
 
+
+
+router.get('/s_writer', (req, res) => {
+
+  gfs.files.find().toArray((err, files) => {
+    // Check if files
+    if (!files || files.length === 0) {
+
+      res.render('users/submitted_writer', { files: false });
+    } else {
+      files.map(file => {
+        if (
+          file.contentType === 'image/jpeg' ||
+          file.contentType === 'image/png'
+        ) {
+          file.isImage = true;
+        } else {
+          file.isImage = false;
+        }
+
+      });
+      // console.log(files[0].metadata.writer_details.username)
+      truefilearray = []
+      for(var i = 0; i < files.length;i++){
+        // console.log(files[i].metadata.writer_details.username)
+        // console.log(writer_details.username)
+        // console.log(writer_details.username)
+        if (files[i].metadata.writer_details.username == writer_details.username && files[i].metadata.status == "unsold"){
+              truefilearray.push(files[i])
+          
+            }
+          }
+
+          res.render('users/submitted_writer', { files:truefilearray });
+        }
+            })
+  });
+
+router.get('/th_writer', (req, res) => {
+
+  gfs.files.find().toArray((err, files) => {
+    // Check if files
+    if (!files || files.length === 0) {
+
+      res.render('users/thistory_writer', { files: false });
+    } else {
+      files.map(file => {
+        if (
+          file.contentType === 'image/jpeg' ||
+          file.contentType === 'image/png'
+        ) {
+          file.isImage = true;
+        } else {
+          file.isImage = false;
+        }
+
+      });
+      // console.log(files[0].metadata.writer_details.username)
+      truefilearray = []
+      for(var i = 0; i < files.length;i++){
+        // console.log(files[i].metadata.writer_details.username)
+        // console.log(writer_details.username)
+        // console.log(writer_details.username)
+        if (files[i].metadata.writer_details.username == writer_details.username && files[i].metadata.status == "sold"){
+              truefilearray.push(files[i])
+          
+            }
+          }
+
+          res.render('users/thistory_writer', { files:truefilearray });
+        }
+            })
+  });
+
+
+
+router.get('/th_producer', (req, res) => {
+
+  gfs.files.find().toArray((err, files) => {
+    // Check if files
+    if (!files || files.length === 0) {
+
+      res.render('users/thistory_producer', { files: false });
+    } else {
+      files.map(file => {
+        if (
+          file.contentType === 'image/jpeg' ||
+          file.contentType === 'image/png'
+        ) {
+          file.isImage = true;
+        } else {
+          file.isImage = false;
+        }
+
+      });
+      // console.log(files[0].metadata.writer_details.username)
+      truefilearray = []
+      for(var i = 0; i < files.length;i++){
+        // console.log(files[i].metadata.writer_details.username)
+        // console.log(writer_details.username)
+        // console.log(writer_details.username)
+        if (files[i].metadata.helpername == files[i].metadata.writer_details_username  && files[i].metadata.status == "sold"){
+              truefilearray.push(files[i])
+          
+            }
+          }
+
+          res.render('users/thistory_producer', { files:truefilearray });
+        }
+            })
+  });
 router.post('/filter', (req, res) => {
 
   gfs.files.find().toArray((err, files) => {
     // Check if files
     if (!files || files.length === 0) {
 
-      res.render('users/script_upload', { files: false });
+      res.render('users/submitted_writer', { files: false });
     } else {
       files.map(file => {
         if (
@@ -301,17 +435,30 @@ router.post('/filter', (req, res) => {
       // console.log(req.body)
       // console.log(files[0].metadata.writer_details.username)
       truefilterarray = []
-      for(var i = 0; i < files.length;i++){
-        // console.log(files[i].metadata.writer_details.username)
-        // console.log(writer_details.username)
-        // console.log(writer_details.username)
-        if (files[i].metadata.writer_details.username == writer_details.username && files[i].metadata.additional_data.genre == req.body.genref){
-              truefilterarray.push(files[i])
-          
+      if (req.body.genref != "All")
+        for(var i = 0; i < files.length;i++){
+          // console.log(files[i].metadata.writer_details.username)
+          // console.log(writer_details.username)
+          // console.log(writer_details.username)
+          if (files[i].metadata.writer_details.username == writer_details.username && files[i].metadata.additional_data.genre == req.body.genref ){
+                truefilterarray.push(files[i])
+            
+              }
+            
             }
-          }
-
-          res.render('users/script_upload', { files:truefilterarray });
+        else{
+          for(var i = 0; i < files.length;i++){
+          // console.log(files[i].metadata.writer_details.username)
+          // console.log(writer_details.username)
+          // console.log(writer_details.username)
+          if (files[i].metadata.writer_details.username == writer_details.username  ){
+                truefilterarray.push(files[i])
+            
+              }
+            
+            }
+        }
+        res.render('users/submitted_writer', { files:truefilterarray });
         }
             })
   });          
@@ -324,13 +471,22 @@ router.post('/filter', (req, res) => {
 
 
 
+
+
+
+
+
+
+
+
+
 router.get('/read', (req, res) => {
 
   gfs.files.find().toArray((err, files) => {
     // Check if files
     if (!files || files.length === 0) {
 
-      res.render('users/script_upload', { files: false });
+      res.render('users/script_producers', { files: false });
     } else {
       files.map(file => {
         if (
@@ -343,12 +499,73 @@ router.get('/read', (req, res) => {
         }
 
       });
+      truefilterarray = []
+      for(var i = 0; i < files.length;i++){
+        if (files[i].metadata.status == "unsold" ){
+              truefilterarray.push(files[i])
+          
+            }
+          }
 
-      res.render('users/script_producers', { files: files });
+      res.render('users/script_producers', { files: truefilterarray });
     }
   });
 
 });
+
+
+
+
+router.post('/filter_producer', (req, res) => {
+
+  gfs.files.find().toArray((err, files) => {
+    // Check if files
+    if (!files || files.length === 0) {
+
+      res.render('users/script_producers', { files: false });
+    } else {
+      files.map(file => {
+        if (
+          file.contentType === 'image/jpeg' ||
+          file.contentType === 'image/png'
+        ) {
+          file.isImage = true;
+        } else {
+          file.isImage = false;
+        }
+
+      });
+      // console.log(req.body)
+      // console.log(files[0].metadata.writer_details.username)
+      truefilterarray = []
+      if (req.body.genref != "All")
+        for(var i = 0; i < files.length;i++){
+          // console.log(files[i].metadata.writer_details.username)
+          // console.log(writer_details.username)
+          // console.log(writer_details.username)
+          if (files[i].metadata.additional_data.genre == req.body.genref && files[i].metadata.status == "unsold" ){
+                truefilterarray.push(files[i])
+            
+              }
+            
+            }
+        else{
+          for(var i = 0; i < files.length;i++){
+          // console.log(files[i].metadata.writer_details.username)
+          // console.log(writer_details.username)
+          // console.log(writer_details.username)
+          if (files[i].metadata.status == "unsold" ){
+                truefilterarray.push(files[i])
+            
+              }
+            
+            }
+        }
+
+          res.render('users/script_producers', { files:truefilterarray });
+        }
+            })
+  });          
 
 // @route POST /upload
 // @desc  Uploads file to DB
@@ -470,7 +687,7 @@ router.delete('/files/:id', (req, res) => {
       return res.status(404).json({ err: err });
     }
 
-    res.redirect('/users/up');
+    res.redirect('/users/s_writer');
   });
 });
 
@@ -485,46 +702,47 @@ router.get('/producers/files/:id', (req, res) => {
       for(var i = 0; i < files.length;i++){
         if (files[i]._id == req.params.id){
           file_id = files[i]._id;
-          masterfile= files[i]
+          masterfile= files[i];
           price = files[i].price;
           // console.log(files[i].metadata)
           // console.log(masterfile)
 
         }
   }
-    res.redirect('/users/buy',);
+    res.redirect('/users/buy');
   });
 });
 
+// router.get('opentab', (req, res) => {
+//   res.render('users/buy' , {file:masterfile});
+// });
 
 router.get('/buy', (req, res) => {
   // res.render('users/buy' );
+  // res.redirect('/users/opentab',target ="_blank");
   res.render('users/buy' , {file:masterfile});
+  
 });
 
 
 // POST FORM PAYMENT
 var download_file
 router.post('/buy_form/:id', (req, res,next) => {
-  // console.log(req.params.id)
-  // var filePath = "/s3/file/path/..."; // Or format the path using the `id` rest param
-  // var fileName = masterfile.filename; // file name 
-  // res.download(filePath, fileName)
-  // next();
-
-
     /** First check if file exists */
+
      gfs.files.find().toArray((err, files) => {
-    
       for(var i = 0; i < files.length;i++){
         if (files[i]._id == req.params.id){
-          
           download_file= files[i]
-          
-          
-
+          gfs.files.update(
+              { _id: files[i]._id },
+              { $set: {
+                'metadata.status': "sold",
+                'metadata.helpername': files[i].metadata.writer_details.username
+                } })
+           
         }
-  }
+      }
         // create read stream
         var readstream = gfs.createReadStream({
             _id: download_file._id,
@@ -534,6 +752,7 @@ router.post('/buy_form/:id', (req, res,next) => {
         res.set('Content-Type', download_file.contentType)
         // Return response
         return readstream.pipe(res);
+        // res.redirect('/users/up');
     });
 });
   // res.end("Payment successful")
@@ -545,15 +764,15 @@ router.post('/buy_form/:id', (req, res,next) => {
 router.post('/submit_signup_form', (req, res) => {
   let errors = [];
 
-  // if(req.body.password != req.body.ConfirmPassword){
-  //  console.log("Passwords not matched")
-  //   errors.push({text:'Passwords do not match'});
-  // }
+  if(req.body.Password != req.body.ConfirmPassword){
+   console.log("Passwords not matched")
+    errors.push({text:'Passwords do not match'});
+  }
 
-  // if(req.body.password.length < 4){
+
+  // if(req.body.Password.length < 4){
   //   errors.push({text:'Password must be at least 4 characters'});
   // }
-
   if(errors.length > 0){
     res.render('users/register', {
        errors: errors,

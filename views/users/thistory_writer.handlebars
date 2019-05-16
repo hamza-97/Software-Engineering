@@ -1,50 +1,34 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Buy Scripts</title>
+    <title>File Uploads</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/upload.css">
   </head>
   <STYLE>A {text-decoration: none;} </STYLE>
-  <body>
+<body>
     <div class = "lul">
       <table  >
         <tr >
-          <td class="topbtn"><a  class ="insidebutton1 " href="/users/producer">Home</a></div></td>
-          <td class="topbtn"><a  class ="insidebutton1 " href="/users/viewprof">My Profile</a></div></td>
+          <td class="topbtn"><a  class ="insidebutton1 " href="/users/writer">Home</a></div></td>
+          <td class="topbtn"><a  class ="insidebutton1 " href="/users/view">My Profile</a></div></td>
           <td class="topbtn"><a  class ="insidebutton1 " href="/users/loggedout">Logout</a></div></td>
         </tr>
       </table>
       </div>
     <br>
-    <div class="container">
-      <div class="aaa">
+  <div class="container">
+
+ <div class="aaa">
         <h2 class = "hero1"><img class="sss" src="/img/scripto.png" alt="Logo" width="80" height="100"></img><br><br>Scriptomania </h2><br>
       </div>
-     
-        <h1 class="text-center display-4 my-4">Scripts</h1>
+            
 
-        <form  class="width" action="/users/filter_producer" method="POST" >
-        <div class="card card-body mb-4">
-
-    <select name="genref" id="genref" onchange="this.form.submit()">
-      <option  value="Filter By Genre">Filter by Genre</option>
-      <option  value="All">All</option>
-        <option  value="Thriller">Thriller</option>
-        <option  value="Horror">Horror</option>
-        <option  value="Romance">Romance</option>
-        <option  value="Action">Action</option>
-        <option  value="Fantasy">Fantasy</option>
-        <option  value="Mystery">Mystery</option>
-        <option  value="Fiction">Fiction</option>
-        <option  value="Psifi">Psifi</option>
-    </select>
-    </div>
-  </form>
-        <!-- </div> -->
+        
         {{#each files}}
         
-        <div class="card card-body mb-3"> 
+        
+       <div class="card card-body mb-3"> 
           <div class="left">
             <div class="card card-body mb-3"> 
               <div class="row">
@@ -73,18 +57,12 @@
           <p class="bold1"><span style="font-weight: bold;">Synopsis: </span>{{this.metadata.additional_data.sypnosis}}
           </p>
         </div>
-          
-          <form method="GET" action="/users/producers/files/{{this._id}}?_">
-            <a href = "/users/buy" ><button class="btn btn-danger btn-block mt-4">BUY</button></a>
-          </form>
+    
          </div> 
        </div>
         {{/each}}
-
-
-
-      </div>
  
+
   
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
