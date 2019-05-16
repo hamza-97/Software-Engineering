@@ -403,7 +403,7 @@ router.get('/th_producer', (req, res) => {
         // console.log(files[i].metadata.writer_details.username)
         // console.log(writer_details.username)
         // console.log(writer_details.username)
-        if (files[i].metadata.helpername == files[i].metadata.writer_details_username  && files[i].metadata.status == "sold"){
+        if (files[i].metadata.helpername == writer_details.username  && files[i].metadata.status == "sold"){
               truefilearray.push(files[i])
           
             }
@@ -413,6 +413,10 @@ router.get('/th_producer', (req, res) => {
         }
             })
   });
+
+
+
+
 router.post('/filter', (req, res) => {
 
   gfs.files.find().toArray((err, files) => {
@@ -738,7 +742,7 @@ router.post('/buy_form/:id', (req, res,next) => {
               { _id: files[i]._id },
               { $set: {
                 'metadata.status': "sold",
-                'metadata.helpername': files[i].metadata.writer_details.username
+                'metadata.helpername': writer_details.username
                 } })
            
         }
