@@ -37,7 +37,7 @@ router.get('/home', (req, res) => {
 });
 // Payment Route
 
-
+cosole.log("Okay best")
 router.get('/writer', (req, res) => {
   res.render('users/writer',{name});
 });
