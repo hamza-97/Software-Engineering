@@ -11,7 +11,7 @@ const User = mongoose.model('users');
 // require('./models/Posts');
 // require('./models/Comments');
     
-
+console.log("Ok")
 
 const path = require('path');
 const crypto = require('crypto');
